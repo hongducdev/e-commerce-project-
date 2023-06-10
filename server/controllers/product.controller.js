@@ -33,11 +33,32 @@ const getProduct = asyncHandler(async (req, res) => {
 });
 
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find();
+  const queries = { ...req.query };
 
-  return res.status(200).json({
-    success: products ? true : false,
-    productData: products ? products : "No product found",
+  const excludedFields = ["page", "sort", "limit", "fields"];
+  excludedFields.forEach((el) => delete queries[el]);
+
+  let queryString = JSON.stringify(queries);
+  queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+  const formatedQueries = JSON.parse(queryString);
+
+  if (queries?.title)
+    formatedQueries.title = { $regex: queries.title, $options: "i" };
+  let queryCommand = Product.find(formatedQueries);
+
+  if(req.query.sort) {
+    const sortBy = req.query.sort.split(",").join(" ");
+    queryCommand = queryCommand.sort(sortBy);
+  }
+
+  queryCommand.exec(async (err, products) => {
+    if (err) throw new Error(err);
+    const counts = await Product.find(formatedQueries).countDocuments();
+    return res.status(200).json({
+      success: products ? true : false,
+      productData: products ? products : "No product found",
+      counts,
+    });
   });
 });
 
