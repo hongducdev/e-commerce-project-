@@ -1,4 +1,5 @@
 const userRoute = require("./user.route.js");
+const productRoute = require("./product.route.js");
 const {
   notFound,
   errorHandler,
@@ -6,6 +7,7 @@ const {
 
 const initRoutes = (app) => {
   app.use("/api/user", userRoute);
+  app.use("/api/product", productRoute);
 
   app.use(notFound);
   app.use(errorHandler);
