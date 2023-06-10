@@ -43,13 +43,17 @@ const login = asyncHandler(async (req, res) => {
   const response = await User.findOne({ email });
   if (response && (await response.isCorrectPassword(password))) {
     // Tách password và role ra khỏi response
-    const { password, role, ...userData } = response.toObject();
+    const { password, role, refreshToken, ...userData } = response.toObject();
     // Tạo accessToken và refreshToken
     const accessToken = generateAccessToken(response._id, role);
-    const refreshToken = generateRefreshToken(response._id);
+    const newRefreshToken = generateRefreshToken(response._id);
 
     // Lưu refreshToken vào database
-    await User.findByIdAndUpdate(response._id, { refreshToken }, { new: true });
+    await User.findByIdAndUpdate(
+      response._id,
+      { newRefreshToken },
+      { new: true }
+    );
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
@@ -166,6 +170,50 @@ const resetToken = asyncHandler(async (req, res) => {
   });
 });
 
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({}).select("-password -refreshToken");
+  return res.status(200).json({
+    success: users ? true : false,
+    users: users ? users : "Users not found",
+  });
+});
+
+const deleteUser = asyncHandler(async (req, res) => {
+  const { _id } = req.query;
+  if (!_id) throw new Error("User id is required");
+  const user = await User.findByIdAndDelete(_id);
+  return res.status(200).json({
+    success: user ? true : false,
+    message: user ? "User deleted successfully!" : "User deletion failed!",
+  });
+});
+
+const updateUser = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  if (!_id || Object.keys(req.body).length === 0)
+    throw new Error("User id and data are required");
+  const user = await User.findByIdAndUpdate(_id, req.body, {
+    new: true,
+  }).select("-password -refreshToken -role");
+  return res.status(200).json({
+    success: user ? true : false,
+    message: user ? "User updated successfully!" : "User update failed!",
+  });
+});
+
+const updateUserByAdmin = asyncHandler(async (req, res) => {
+  const { uid } = req.params;
+  if (!uid || Object.keys(req.body).length === 0)
+    throw new Error("User id and data are required");
+  const user = await User.findByIdAndUpdate(uid, req.body, {
+    new: true,
+  }).select("-password -refreshToken -role");
+  return res.status(200).json({
+    success: user ? true : false,
+    message: user ? "User updated successfully!" : "User update failed!",
+  });
+});
+
 module.exports = {
   register,
   login,
@@ -174,4 +222,8 @@ module.exports = {
   logout,
   forgotPassword,
   resetToken,
+  getUsers,
+  deleteUser,
+  updateUser,
+  updateUserByAdmin,
 };

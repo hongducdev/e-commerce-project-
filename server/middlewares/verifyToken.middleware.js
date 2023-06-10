@@ -2,26 +2,39 @@ const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 
 const verifyAccessToken = asyncHandler(async (req, res, next) => {
-  if (req.header?.authorization?.startWith("Bearer")) {
-    const token = req.header.authorization.split(" ")[1];
-    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  // Bearer token
+  // headers: { authorization: Bearer token}
+  if (req?.headers?.authorization?.startsWith("Bearer")) {
+    const token = req.headers.authorization.split(" ")[1];
+    jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
       if (err)
         return res.status(401).json({
           success: false,
-          message: "Invalid token!",
+          mes: "Invalid access token",
         });
-
-      req.user = decoded;
+      req.user = decode;
       next();
     });
   } else {
     return res.status(401).json({
       success: false,
-      message: "Access token not found!",
+      mes: "Require authentication!!!",
+    });
+  }
+});
+
+const isAdmin = asyncHandler(async (req, res, next) => {
+  if (req.user.role === "admin") {
+    next();
+  } else {
+    return res.status(401).json({
+      success: false,
+      message: "You are not admin!",
     });
   }
 });
 
 module.exports = {
   verifyAccessToken,
+  isAdmin,
 };
