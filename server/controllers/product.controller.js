@@ -39,25 +39,38 @@ const getProducts = asyncHandler(async (req, res) => {
   excludedFields.forEach((el) => delete queries[el]);
 
   let queryString = JSON.stringify(queries);
-  queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+  queryString = queryString.replace(
+    /\b(gte|gt|lte|lt)\b/g,
+    (match) => `$${match}`
+  );
   const formatedQueries = JSON.parse(queryString);
 
   if (queries?.title)
     formatedQueries.title = { $regex: queries.title, $options: "i" };
   let queryCommand = Product.find(formatedQueries);
 
-  if(req.query.sort) {
+  if (req.query.sort) {
     const sortBy = req.query.sort.split(",").join(" ");
     queryCommand = queryCommand.sort(sortBy);
   }
+
+  if (req.query.fields) {
+    const fields = req.query.fields.split(",").join(" ");
+    queryCommand = queryCommand.select(fields);
+  }
+
+  const page = +req.query.page || 1;
+  const limit = +req.query.limit || process.env.LIMIT_PRODUCTS;
+  const skip = (page - 1) * limit;
+  queryCommand = queryCommand.skip(skip).limit(limit);
 
   queryCommand.exec(async (err, products) => {
     if (err) throw new Error(err);
     const counts = await Product.find(formatedQueries).countDocuments();
     return res.status(200).json({
       success: products ? true : false,
-      productData: products ? products : "No product found",
       counts,
+      productData: products ? products : "No product found",
     });
   });
 });
@@ -95,10 +108,69 @@ const updateProduct = asyncHandler(async (req, res) => {
   });
 });
 
+const ratings = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  const { star, comment, pid } = req.body;
+
+  if (!star || !pid) {
+    throw new Error("Star or product id is empty");
+  }
+
+  const ratingProduct = await Product.findById(pid);
+  const alreadyRated = ratingProduct?.ratings?.find(
+    (el) => el.postedBy.toString() === _id
+  );
+  if (alreadyRated) {
+    await Product.updateOne(
+      {
+        ratings: { $elemMatch: alreadyRated },
+      },
+      {
+        $set: {
+          "ratings.$.star": star,
+          "ratings.$.comment": comment,
+        },
+      },
+      { new: true }
+    );
+  } else {
+    await Product.findByIdAndUpdate(
+      pid,
+      {
+        $push: {
+          ratings: {
+            star,
+            comment,
+            postedBy: _id,
+          },
+        },
+      },
+      { new: true }
+    );
+  }
+
+  const updatedProduct = await Product.findById(pid);
+  const ratingCount = updatedProduct?.ratings?.length;
+  const ratingSum = updatedProduct?.ratings?.reduce(
+    (acc, el) => acc + +el.star,
+    0
+  );
+  const ratingAverage = Math.round((ratingSum * 10) / ratingCount) / 10;
+  updatedProduct.totalRatings = ratingAverage;
+
+  await updatedProduct.save();
+
+  return res.status(200).json({
+    success: true,
+    updatedProduct,
+  });
+});
+
 module.exports = {
   createProduct,
   getProduct,
   getProducts,
   updateProduct,
   deleteProduct,
+  ratings,
 };
