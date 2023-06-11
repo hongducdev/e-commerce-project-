@@ -3,6 +3,7 @@ const productRoute = require("./product.route.js");
 const productCategoryRoute = require("./productCategory.route.js");
 const blogCategoryRoute = require("./blogCategory.route.js");
 const blogRoute = require("./blog.route.js");
+const brandRoute = require("./brand.route.js");
 const {
   notFound,
   errorHandler,
@@ -14,6 +15,7 @@ const initRoutes = (app) => {
   app.use("/api/productcategory", productCategoryRoute);
   app.use("/api/blogcategory", blogCategoryRoute);
   app.use("/api/blog", blogRoute);
+  app.use("/api/brand", brandRoute);
 
   app.use(notFound);
   app.use(errorHandler);

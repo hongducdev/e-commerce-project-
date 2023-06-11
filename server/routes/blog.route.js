@@ -6,11 +6,13 @@ const {
 } = require("../middlewares/verifyToken.middleware.js");
 
 router.get("/", blogController.getBlogs);
+router.get("/one/:bid", blogController.getBlog);
 router.use(verifyAccessToken);
-router.put("/like", blogController.likeBlog);
+router.put("/like/:bid", blogController.likeBlog);
+router.put("/dislike/:bid", blogController.dislikeBlog);
 router.use(isAdmin);
 router.post("/", blogController.createBlog);
-router.put("/:bid", blogController.updateBlog);
-router.delete("/:bid", blogController.deleteBlog);
+router.put("/update/:bid", blogController.updateBlog);
+router.delete("/delete/:bid", blogController.deleteBlog);
 
 module.exports = router;
