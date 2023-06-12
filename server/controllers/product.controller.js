@@ -167,9 +167,24 @@ const ratings = asyncHandler(async (req, res) => {
 });
 
 const uploadImageProduct = asyncHandler(async (req, res) => {
-  return res.json({
-    success: true,
-    message: "Image uploaded",
+  if (!req.files) {
+    throw new Error("No files found");
+  }
+  const { pid } = req.params;
+  const response = await Product.findByIdAndUpdate(
+    pid,
+    {
+      $push: {
+        images: {
+          $each: req.files.map((file) => file.path),
+        },
+      },
+    },
+    { new: true }
+  );
+  return res.status(200).json({
+    success: response ? true : false,
+    updatedProduct: response ? response : "No image uploaded",
   });
 });
 

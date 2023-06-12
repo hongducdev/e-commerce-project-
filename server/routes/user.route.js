@@ -16,6 +16,8 @@ router.use(verifyAccessToken);
 
 router.get("/current", userController.getCurrent);
 router.put("/current", userController.updateUser);
+router.put("/address", userController.updateAddress);
+router.put("/cart", userController.updateCart);
 
 router.use(isAdmin);
 

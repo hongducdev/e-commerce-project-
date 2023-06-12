@@ -153,16 +153,37 @@ const excludeFields = "firstName lastName email";
 
 const getBlog = asyncHandler(async (req, res) => {
   const { bid } = req.params;
-  const blog = await Blog.findByIdAndUpdate(bid, {
-    $inc: { numberViews: 1 },
-  },
-  { new: true })
+  const blog = await Blog.findByIdAndUpdate(
+    bid,
+    {
+      $inc: { numberViews: 1 },
+    },
+    { new: true }
+  )
     .populate("likes", excludeFields)
     .populate("dislikes", excludeFields);
 
   return res.json({
     success: blog ? true : false,
     blog: blog ? blog : "Cannot get blog",
+  });
+});
+
+const uploadImageBlog = asyncHandler(async (req, res) => {
+  if (!req.file) {
+    throw new Error("No files found");
+  }
+  const { bid } = req.params;
+  const response = await Blog.findByIdAndUpdate(
+    bid,
+    {
+      $set: { image: req.file.path },
+    },
+    { new: true }
+  );
+  return res.status(200).json({
+    success: response ? true : false,
+    updatedBlog: response ? response : "No image uploaded",
   });
 });
 
@@ -174,4 +195,5 @@ module.exports = {
   likeBlog,
   dislikeBlog,
   getBlog,
+  uploadImageBlog,
 };

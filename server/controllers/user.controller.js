@@ -214,6 +214,100 @@ const updateUserByAdmin = asyncHandler(async (req, res) => {
   });
 });
 
+const updateAddress = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  if (!_id || Object.keys(req.body).length === 0)
+    throw new Error("User id and data are required");
+
+  const user = await User.findByIdAndUpdate(
+    _id,
+    { $push: { address: req.body.address } },
+    {
+      new: true,
+    }
+  ).select("-password -refreshToken -role");
+  return res.status(200).json({
+    success: user ? true : false,
+    message: user ? "User updated successfully!" : "User update failed!",
+  });
+});
+
+const updateCart = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  const { pid, quantity, color } = req.body;
+
+  if (!_id || !pid || !quantity || !color) {
+    throw new Error("User id and data are required");
+  }
+
+  const user = await User.findById(_id).select("cart");
+  const alreadyProduct = user.cart.find(
+    (item) => item.product.toString() === pid
+  );
+  if (alreadyProduct) {
+    if (alreadyProduct.color === color) {
+      const response = await User.updateOne(
+        {
+          cart: { $elemMatch: alreadyProduct },
+        },
+        {
+          $set: { "cart.$.quantity": quantity },
+        },
+        {
+          new: true,
+        }
+      );
+
+      return res.status(200).json({
+        success: response ? true : false,
+        updatedUser: response ? response : "User update failed!",
+      });
+    } else {
+      const response = await User.findByIdAndUpdate(
+        _id,
+        {
+          $push: {
+            cart: {
+              product: pid,
+              quantity,
+              color,
+            },
+          },
+        },
+        {
+          new: true,
+        }
+      ).select("-password -refreshToken -role");
+
+      return res.status(200).json({
+        success: response ? true : false,
+        updatedUser: response ? response : "User update failed!",
+      });
+    }
+  } else {
+    const response = await User.findByIdAndUpdate(
+      _id,
+      {
+        $push: {
+          cart: {
+            product: pid,
+            quantity,
+            color,
+          },
+        },
+      },
+      {
+        new: true,
+      }
+    ).select("-password -refreshToken -role");
+
+    return res.status(200).json({
+      success: response ? true : false,
+      updatedUser: response ? response : "User update failed!",
+    });
+  }
+});
+
 module.exports = {
   register,
   login,
@@ -226,4 +320,6 @@ module.exports = {
   deleteUser,
   updateUser,
   updateUserByAdmin,
+  updateAddress,
+  updateCart,
 };

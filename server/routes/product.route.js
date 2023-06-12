@@ -15,6 +15,6 @@ router.use(isAdmin);
 router.post("/", productController.createProduct);
 router.put("/:pid", productController.updateProduct);
 router.delete("/:pid", productController.deleteProduct);
-router.put("/uploadimage/:pid", uploader.single("images"), productController.uploadImageProduct);
+router.put("/uploadimage/:pid", uploader.array("images", 10), productController.uploadImageProduct);
 
 module.exports = router;
