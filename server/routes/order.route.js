@@ -6,7 +6,10 @@ const {
 } = require("../middlewares/verifyToken.middleware.js");
 
 router.use(verifyAccessToken);
-router.use(isAdmin);
 router.post("/", orderController.createOrder);
+router.get("/", orderController.getUserOrder);
+router.use(isAdmin);
+router.put("/status/:oid", orderController.updateStatus);
+router.get("/all", orderController.getOrders);
 
 module.exports = router;

@@ -17,7 +17,13 @@ var orderSchema = new mongoose.Schema({
     default: "Processing",
     enum: ["Cancelled", "Processing", "Success"],
   },
-  paymentIntent: {},
+  total: {
+    type: Number,
+  },
+  coupon: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Coupon",
+  },
   orderBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
