@@ -4,6 +4,7 @@ const {
   verifyAccessToken,
   isAdmin,
 } = require("../middlewares/verifyToken.middleware.js");
+const uploader = require("../configs/cloudinary.config.js");
 
 router.get("/", productController.getProducts);
 router.get("/:pid", productController.getProduct);
@@ -14,5 +15,6 @@ router.use(isAdmin);
 router.post("/", productController.createProduct);
 router.put("/:pid", productController.updateProduct);
 router.delete("/:pid", productController.deleteProduct);
+router.put("/uploadimage/:pid", uploader.single("images"), productController.uploadImageProduct);
 
 module.exports = router;
