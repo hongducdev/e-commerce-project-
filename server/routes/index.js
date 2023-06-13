@@ -6,6 +6,7 @@ const blogRoute = require("./blog.route.js");
 const brandRoute = require("./brand.route.js");
 const CouponRoute = require("./coupon.route.js");
 const orderRoute = require("./order.route.js");
+const insertRoute = require("./insert.route.js");
 const {
   notFound,
   errorHandler,
@@ -20,6 +21,7 @@ const initRoutes = (app) => {
   app.use("/api/brand", brandRoute);
   app.use("/api/coupon", CouponRoute);
   app.use("/api/order", orderRoute);
+  app.use("/api/insert", insertRoute);
 
   app.use(notFound);
   app.use(errorHandler);
