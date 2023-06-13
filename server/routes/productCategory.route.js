@@ -5,10 +5,10 @@ const {
   isAdmin,
 } = require("../middlewares/verifyToken.middleware.js");
 
+router.get("/", productCategoryController.getProductCategories);
 router.use(verifyAccessToken);
 router.use(isAdmin);
 router.post("/", productCategoryController.createProductCategory);
-router.get("/", productCategoryController.getProductCategories);
 router.put("/:pcid", productCategoryController.updateProductCategory);
 router.delete("/:pcid", productCategoryController.deleteProductCategory);
 

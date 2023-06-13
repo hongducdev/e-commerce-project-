@@ -12,7 +12,7 @@ module.exports = {
       colors: {
         primary: "#ee3131",
         textColor: "#1c1d1d",
-        gray: "#151515",
+        grayDark: "#151515",
       },
     },
   },

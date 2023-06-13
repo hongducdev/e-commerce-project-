@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import { apiGetCategory } from "../apis/app";
 
 const Sidebar = () => {
-  return (
-    <div>Sidebar</div>
-  )
-}
+  const [categories, setCategories] = React.useState(null);
+  const getCategories = async () => {
+    const response = await apiGetCategory();
+    if (response.success === true) setCategories(response.productCategories);
+  };
 
-export default Sidebar
+  React.useEffect(() => {
+    getCategories();
+  }, []);
+
+  console.log(categories);
+
+  return <div>Sidebar</div>;
+};
+
+export default Sidebar;

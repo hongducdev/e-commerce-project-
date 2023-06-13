@@ -1,9 +1,47 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import path from "../ultils/path";
+import icons from "../ultils/icons";
+
+const { FaPhoneAlt, FaUserAlt, FaShoppingBag, IoMdMail } = icons;
 
 const Header = () => {
   return (
-    <div className='w-main h-[110px] py-[35px]'>Header</div>
-  )
-}
+    <div className="w-main h-[110px] py-[35px] flex items-center justify-between">
+      <div className="">
+        <Link to={path.HOME}>
+          <span className="font-bold text-4xl">
+            HDCD <span className="text-primary">SHOP</span>
+          </span>
+        </Link>
+      </div>
+      <div className="flex items-center h-full">
+        <div className="text-center px-5 border-r border-gray-400">
+          <span className="font-semibold text-sm flex items-center gap-2 text-gray-600">
+            <FaPhoneAlt className="mr-[5px] text-primary" />
+            <span>(+84) 916 157 704</span>
+          </span>
+          <span className="text-xs text-gray-500">Mon-Sat 9:00AM - 8:00PM</span>
+        </div>
+        <div className="text-center px-5 border-r border-gray-400">
+          <span className="font-semibold text-sm flex items-center gap-2 text-gray-600 uppercase">
+            <IoMdMail className="mr-[5px] text-primary" />
+            <span>contact.hongduc@gmail.com</span>
+          </span>
+          <span className="text-xs text-gray-500">Online Support 24/7</span>
+        </div>
+        <div className="flex items-center justify-center gap-2 px-5 border-r border-gray-400 h-full">
+          <FaShoppingBag size={24} className="text-primary" />
+          <span className="">0 item</span>
+        </div>
+        <div className="px-5">
+          <Link to={path.LOGIN}>
+            <FaUserAlt size={24} className="text-primary" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default Header
+export default Header;
