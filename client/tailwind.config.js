@@ -15,6 +15,22 @@ module.exports = {
         textColor: "#1c1d1d",
         grayDark: "#151515",
       },
+      keyframes: {
+        "slide-up": {
+          "0%": {
+            "-webkit-transform": "translateY(0)",
+            transform: "translateY(0)",
+          },
+          "100%": {
+            "-webkit-transform": "translateY(-100px)",
+            transform: "translateY(-100px)",
+          },
+        },
+      },
+      animation: {
+        "slide-up":
+          "slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+      },
     },
   },
   plugins: [],

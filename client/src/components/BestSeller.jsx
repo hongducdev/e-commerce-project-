@@ -59,7 +59,7 @@ const BestSeller = () => {
     if (activeTab === 1) {
       setProducts(newProduct);
     }
-  }, [activeTab]);
+  }, [activeTab, bestSeller, newProduct]);
 
   return (
     <div>
@@ -87,7 +87,6 @@ const BestSeller = () => {
           ))}
         </Slider>
       </div>
-      <div className="h-[200px]"></div>
     </div>
   );
 };
