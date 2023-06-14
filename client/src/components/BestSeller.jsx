@@ -39,8 +39,6 @@ const BestSeller = () => {
       }),
     ]);
 
-    console.log(response);
-
     if (response[0].success) {
       setBestSeller(response[0]?.productData);
       setNewProduct(response[1]?.productData);

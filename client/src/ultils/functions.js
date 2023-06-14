@@ -25,9 +25,9 @@ export const renderStartFromNumber = (number) => {
 
   for (let i = 1; i <= 5; i++) {
     if (i <= number) {
-      stars.push(<BsStarFill key={i} size={14} className="text-[#f1b400]" />);
+      stars.push(<BsStarFill key={i} className="text-[#f1b400]" />);
     } else {
-      stars.push(<BsStar key={i} size={14} className="text-[#f1b400]" />);
+      stars.push(<BsStar key={i} className="text-[#f1b400]" />);
     }
   }
 

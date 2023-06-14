@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { Banner, BestSeller, Sidebar } from "../../components";
+import { Banner, BestSeller, DealDaily, Sidebar } from "../../components";
 
 const Home = () => {
   return (
     <div className="w-main flex">
-      <div className="flex flex-col gap-5 w-[20%] flex-auto">
+      <div className="flex flex-col gap-5 w-[25%] flex-auto">
         <Sidebar />
-        <span className="">deal</span>
+        <DealDaily />
       </div>
-      <div className="flex flex-col gap-5 pl-5 w-[80%] flex-auto">
+      <div className="flex flex-col gap-5 pl-5 w-[75%] flex-auto">
         <Banner />
         <BestSeller />
         <div className="grid grid-cols-2 gap-5">
@@ -20,7 +20,6 @@ const Home = () => {
           </Link>
         </div>
       </div>
-      <div className="h-[200px]"></div>
     </div>
   );
 };
