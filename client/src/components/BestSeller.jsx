@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as apis from "../apis";
 
 import Slider from "react-slick";
+import Product from "./Product";
 
 const tabs = [
   {
@@ -25,27 +26,40 @@ var settings = {
 const BestSeller = () => {
   const [bestSeller, setBestSeller] = useState([]);
   const [newProduct, setNewProduct] = useState([]);
+  const [products, setProducts] = useState([]);
   const [activeTab, setActiveTab] = useState(0);
 
   const fetchProducts = async () => {
     const response = await Promise.all([
       apis.getProducts({
-        order: "-sold",
+        sort: "-sold",
       }),
       apis.getProducts({
-        order: "-createdAt",
+        sort: "-createdAt",
       }),
     ]);
 
-    if (response[0].success && response[1].success) {
-      setBestSeller(response[0].productData);
-      setNewProduct(response[1].productData);
+    console.log(response);
+
+    if (response[0].success) {
+      setBestSeller(response[0]?.productData);
+      setNewProduct(response[1]?.productData);
+      setProducts(response[0]?.productData);
     }
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    if (activeTab === 0) {
+      setProducts(bestSeller);
+    }
+    if (activeTab === 1) {
+      setProducts(newProduct);
+    }
+  }, [activeTab]);
 
   return (
     <div>
@@ -62,28 +76,18 @@ const BestSeller = () => {
           </span>
         ))}
       </div>
-      <div className="mt-5">
+      <div className="mt-5 mx-[-10px]">
         <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
+          {products?.map((product) => (
+            <Product
+              key={product._id}
+              product={product}
+              isNew={activeTab === 1 ? true : false}
+            />
+          ))}
         </Slider>
       </div>
+      <div className="h-[200px]"></div>
     </div>
   );
 };

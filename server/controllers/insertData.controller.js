@@ -19,6 +19,7 @@ const fn = async (product) => {
     quantity: Math.round(Math.random() * 1000),
     sold: Math.round(Math.random() * 1000),
     images: product?.images,
+    thumb: product?.thumb,
   });
 };
 
