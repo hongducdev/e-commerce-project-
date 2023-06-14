@@ -16,21 +16,21 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex items-center h-full">
-        <div className="text-center px-5 border-r border-gray-400">
+        <div className="text-center px-5 border-r border-gray-300">
           <span className="font-semibold text-sm flex items-center gap-2 text-gray-600">
             <FaPhoneAlt className="mr-[5px] text-primary" />
             <span>(+84) 916 157 704</span>
           </span>
           <span className="text-xs text-gray-500">Mon-Sat 9:00AM - 8:00PM</span>
         </div>
-        <div className="text-center px-5 border-r border-gray-400">
+        <div className="text-center px-5 border-r border-gray-300">
           <span className="font-semibold text-sm flex items-center gap-2 text-gray-600 uppercase">
             <IoMdMail className="mr-[5px] text-primary" />
             <span>contact.hongduc@gmail.com</span>
           </span>
           <span className="text-xs text-gray-500">Online Support 24/7</span>
         </div>
-        <div className="flex items-center justify-center gap-2 px-5 border-r border-gray-400 h-full">
+        <div className="flex items-center justify-center gap-2 px-5 border-r border-gray-300 h-full">
           <FaShoppingBag size={24} className="text-primary" />
           <span className="">0 item</span>
         </div>

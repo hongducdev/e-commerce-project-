@@ -6,7 +6,7 @@ const classes = "text-sm uppercase hover:text-primary";
 
 const Navigation = () => {
   return (
-    <div className="w-main h-[50px] py-2 flex items-center gap-10">
+    <div className="w-main h-[50px] py-2 flex items-center gap-10 border-t border-b border-gray-300 mb-5">
       {navigation.map((item) => (
         <NavLink key={item.id} to={item.path} className={({isActive}) => {
           return isActive ? `${classes} text-primary` : `${classes} text-gray-600`
