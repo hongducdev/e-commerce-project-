@@ -22,7 +22,14 @@ const DealDaily = () => {
     });
     if (response.success) {
       setDealDaily(response.productData[0]);
-      setHour(24);
+      const h = 24 - new Date().getHours();
+      const m = 60 - new Date().getMinutes();
+      const s = 60 - new Date().getSeconds();
+      setHour(h);
+      setMinute(m);
+      setSecond(s);
+    } else {
+      setHour(0);
       setMinute(0);
       setSecond(0);
     }

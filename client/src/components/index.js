@@ -7,3 +7,5 @@ export { default as Product } from "./Product";
 export { default as SelectOption } from "./SelectOption";
 export { default as DealDaily } from "./DealDaily";
 export { default as Counter } from "./Counter";
+export { default as FeatureProducts } from "./FeatureProducts";
+export { default as ProductCard } from "./ProductCard";
