@@ -2,6 +2,8 @@ import React from "react";
 import { formatMoney, renderStartFromNumber } from "../ultils/functions";
 import SelectOption from "./SelectOption";
 import icons from "../ultils/icons";
+import { Link } from "react-router-dom";
+import path from "../ultils/path";
 
 const { FaRegEye, FaShoppingCart, AiFillHeart } = icons;
 
@@ -19,24 +21,29 @@ const Product = ({ product, isNew }) => {
           </div>
         )}
         <div className="relative">
-          <img
-            src={
-              product?.thumb ||
-              "https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBob25lfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-            }
-            alt="image_product"
-            className="w-full object-cover"
-          />
+          <Link to={`/${path.DETAIL_PRODUCT}/${product?._id}/${product?.slug}`}>
+            <img
+              src={
+                product?.thumb ||
+                "https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBob25lfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              }
+              alt="image_product"
+              className="w-full object-cover"
+            />
+          </Link>
           <div className="absolute bottom-0 left-0 right-0 hidden group-hover:flex justify-center gap-3 animate-slide-up transition-all">
             <SelectOption icon={<AiFillHeart />} title="Add to Wishlist" />
-            <SelectOption icon={<FaShoppingCart />} title="Buy Now"/>
+            <SelectOption icon={<FaShoppingCart />} title="Buy Now" />
             <SelectOption icon={<FaRegEye />} title="Quick view" />
           </div>
         </div>
         <div className="flex flex-col gap-2 mt-4">
-          <span className="capitalize line-clamp-1 hover:text-primary">
+          <Link
+            className="capitalize line-clamp-1 hover:text-primary"
+            to={`/${path.DETAIL_PRODUCT}/${product?._id}/${product?.slug}`}
+          >
             {product?.title}
-          </span>
+          </Link>
           <span className="flex">
             {renderStartFromNumber(+product?.totalRatings)}
           </span>

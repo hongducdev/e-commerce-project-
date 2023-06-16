@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 const Home = () => {
   const { newProducts } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.app);
-  console.log("🚀 ~ Home ~ categories:", categories);
 
   return (
     <div>

@@ -31,6 +31,8 @@ const FeatureProducts = () => {
           products.map((product) => (
             <ProductCard
               key={product._id}
+              pid={product?._id}
+              slug={product?.slug}
               title={product?.title}
               thumb={product?.thumb}
               price={product?.price}

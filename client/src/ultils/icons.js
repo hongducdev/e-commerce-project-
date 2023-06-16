@@ -6,6 +6,10 @@ import {
   FaShoppingBag,
   FaRegEye,
   FaShoppingCart,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaGoogle,
 } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 
@@ -20,6 +24,10 @@ const icons = {
   FaShoppingBag,
   FaRegEye,
   FaShoppingCart,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaGoogle,
   IoMdMail,
 };
 

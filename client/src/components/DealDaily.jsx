@@ -3,6 +3,8 @@ import icons from "../ultils/icons";
 import * as apis from "../apis";
 import { formatMoney, renderStartFromNumber } from "../ultils/functions";
 import Counter from "./Counter";
+import { Link } from "react-router-dom";
+import path from "../ultils/path";
 
 const { AiOutlineMenu, BsStarFill } = icons;
 let interval;
@@ -80,15 +82,22 @@ const DealDaily = () => {
         <span className="flex-1"></span>
       </div>
       <div className="flex flex-col mt-[50px]">
-        <img
-          src={dealDaily?.thumb}
-          alt="thumbnail"
-          className="w-full object-cover cursor-pointer"
-        />
+        <Link
+          to={`/${path.DETAIL_PRODUCT}/${dealDaily?._id}/${dealDaily?.slug}`}
+        >
+          <img
+            src={dealDaily?.thumb}
+            alt="thumbnail"
+            className="w-full object-cover cursor-pointer"
+          />
+        </Link>
         <div className="text-center mt-4">
-          <span className="hover:text-primary cursor-pointer">
+          <Link
+            className="hover:text-primary cursor-pointer"
+            to={`/${path.DETAIL_PRODUCT}/${dealDaily?._id}/${dealDaily?.slug}`}
+          >
             {dealDaily?.title}
-          </span>
+          </Link>
           <span className="flex items-center justify-center my-3 text-xl">
             {renderStartFromNumber(dealDaily?.totalRatings)}
           </span>
@@ -102,9 +111,13 @@ const DealDaily = () => {
           <Counter number={second} unit="Seconds" />
         </div>
         <div className="mt-4">
-          <button className="w-full bg-primary hover:bg-grayDark text-white flex items-center justify-center gap-2 uppercase p-3 rounded-md font-medium">
-            <AiOutlineMenu /> options
-          </button>
+          <Link
+            to={`/${path.DETAIL_PRODUCT}/${dealDaily?._id}/${dealDaily?.slug}`}
+          >
+            <button className="w-full bg-primary hover:bg-grayDark text-white flex items-center justify-center gap-2 uppercase p-3 rounded-md font-medium">
+              <AiOutlineMenu /> options
+            </button>
+          </Link>
         </div>
       </div>
     </div>
