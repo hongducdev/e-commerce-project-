@@ -8,7 +8,7 @@ const { FaRegEye, FaShoppingCart, AiFillHeart } = icons;
 const Product = ({ product, isNew }) => {
   return (
     <div className="w-full px-[10px] relative group cursor-pointer">
-      <div className="border border-gray-300 p-5 rounded-md">
+      <div className="border border-gray-300 p-5 rounded-md h-auto">
         {isNew ? (
           <div className="bg-primary top-0 right-[10px] absolute text-white px-4 py-2 rounded-tr-md rounded-bl-md uppercase text-xs z-10">
             New

@@ -10,7 +10,6 @@ const FeatureProducts = () => {
       limit: 9,
       totalRatings: 4,
     });
-    console.log(response);
     if (response.success) {
       setProducts(response.productData);
     }
