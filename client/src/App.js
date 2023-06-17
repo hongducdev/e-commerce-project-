@@ -24,14 +24,17 @@ const App = () => {
   return (
     <div className="min-h-screen">
       <Routes>
+        <Route path={path.LOGIN} element={<Login />} />
         <Route path={path.PUBLIC} element={<Public />}>
           <Route path={path.HOME} element={<Home />} />
-          <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.PRODUCTS} element={<Product />} />
           <Route path={path.BLOGS} element={<Blog />} />
           <Route path={path.FAQ} element={<FAQ />} />
           <Route path={path.OUR_SERVICES} element={<Services />} />
-          <Route path={path.DETAIL_PRODUCT__PID__TITLE} element={<DetailProduct />} />
+          <Route
+            path={path.DETAIL_PRODUCT__PID__TITLE}
+            element={<DetailProduct />}
+          />
         </Route>
       </Routes>
     </div>

@@ -131,7 +131,13 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className=""></div>
+      <div className="bg-black h-[70px] flex items-center justify-center">
+        <div className="w-main flex items-center justify-between">
+          <span className="text-gray-400 text-xs">
+            © 2023 Hong Duc. All Rights Reserved | Design by Hong Duc
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
