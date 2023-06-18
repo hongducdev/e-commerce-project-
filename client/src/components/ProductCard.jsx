@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { formatMoney, renderStartFromNumber } from "../ultils/functions";
 import path from "../ultils/path";
 
-const ProductCard = ({ title, thumb, price, totalRatings, pid, slug }) => {
+const ProductCard = ({ title, thumb, price, totalRatings, pid, slug, category }) => {
   return (
     <div className="w-full border border-gray-300 rounded-md p-4 flex items-center gap-5">
       <div className="w-[30%]">
-        <Link to={`/${path.DETAIL_PRODUCT}/${pid}/${slug}`}>
+        <Link to={`/${category.toLowerCase()}/${pid}/${slug}`}>
           <img src={thumb} alt="thumbnail" className="w-full" />
         </Link>
       </div>
       <div className="flex flex-col gap-2">
-        <Link to={`/${path.DETAIL_PRODUCT}/${pid}/${slug}`}>
+        <Link to={`/${category.toLowerCase()}/${pid}/${slug}`}>
           <h3 className="text-grayDark hover:text-primary text-sm font-medium capitalize line-clamp-1">
             {title}
           </h3>

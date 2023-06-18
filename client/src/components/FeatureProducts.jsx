@@ -36,6 +36,7 @@ const FeatureProducts = () => {
               title={product?.title}
               thumb={product?.thumb}
               price={product?.price}
+              category={product?.category}
               totalRatings={product?.totalRatings}
             />
           ))}

@@ -36,7 +36,7 @@ const App = () => {
           <Route path={path.FAQ} element={<FAQ />} />
           <Route path={path.OUR_SERVICES} element={<Services />} />
           <Route
-            path={path.DETAIL_PRODUCT__PID__TITLE}
+            path={path.DETAIL_PRODUCT__CATEGORY__PID__TITLE}
             element={<DetailProduct />}
           />
         </Route>

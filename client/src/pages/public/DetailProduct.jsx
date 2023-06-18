@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import * as apis from "../../apis";
+import {
+  Breadcrumbs
+} from "../../components";
 
 const DetailProduct = () => {
   const {pid} = useParams();
@@ -19,14 +22,12 @@ const DetailProduct = () => {
     };
   }, [pid]);
 
-
   return (
     <div className="w-full">
       <div className="w-full bg-gray-100 h-[81px] flex items-center justify-center">
         <div className="w-main">
-          <h3 className="text-lg font-semibold">
-            {product?.title}
-          </h3>
+          <h3 className="text-lg font-semibold">{product?.title}</h3>
+          <Breadcrumbs title={product?.title} category={product?.category} />
         </div>
       </div>
     </div>

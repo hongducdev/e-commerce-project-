@@ -21,7 +21,7 @@ const Product = ({ product, isNew }) => {
           </div>
         )}
         <div className="relative">
-          <Link to={`/${path.DETAIL_PRODUCT}/${product?._id}/${product?.slug}`}>
+          <Link to={`/${product?.category.toLowerCase()}/${product?._id}/${product?.slug}`}>
             <img
               src={
                 product?.thumb ||
@@ -40,7 +40,7 @@ const Product = ({ product, isNew }) => {
         <div className="flex flex-col gap-2 mt-4">
           <Link
             className="capitalize line-clamp-1 hover:text-primary"
-            to={`/${path.DETAIL_PRODUCT}/${product?._id}/${product?.slug}`}
+            to={`/${product?.category.toLowerCase()}/${product?._id}/${product?.slug}`}
           >
             {product?.title}
           </Link>
