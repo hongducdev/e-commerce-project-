@@ -17,10 +17,18 @@ export const apiLogin = async (data) => {
   });
 };
 
-export const apiForgotPassword = async ({ email }) => {
+export const apiForgotPassword = async (data) => {
   return axios({
     url: "/user/forgotpassword",
     method: "POST",
-    data: { email },
+    data
+  });
+};
+
+export const apiResetPassword = async (data) => {
+  return axios({
+    url: "/user/resetpassword",
+    method: "PUT",
+    data
   });
 };

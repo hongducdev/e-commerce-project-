@@ -60,12 +60,18 @@ const Login = () => {
   }, [payload, isRegister, dispatch, navigate]);
 
   // forgot password
-  const [email, setEmail] = useState("");
+  const [payloadForgotPassword, setPayloadForgotPassword] = useState({
+    email: "",
+  });
   const handleForgotPassword = async () => {
-    const response = await apis.apiForgotPassword(email);
+    const response = await apis.apiForgotPassword({
+      ...payloadForgotPassword,
+    });
     if (response.success) {
       toast.success(response.message);
-      setEmail("");
+      setPayloadForgotPassword({
+        email: "",
+      });
       setIsForgotPassword(false);
     } else {
       toast.error(response.message);
@@ -75,7 +81,7 @@ const Login = () => {
   return (
     <div className="h-screen w-screen flex items-center justify-center relative">
       {isForgotPassword && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-20 flex items-center justify-center">
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-20 flex items-center justify-center animate-slide-up">
           <div className="bg-white min-w-[500px] p-8 rounded-lg">
             <div className="flex justify-between">
               <h1 className="text-3xl text-primary font-semibold mb-10 uppercase text-center">
@@ -92,8 +98,8 @@ const Login = () => {
               <InputField
                 type="email"
                 placeholder="Email"
-                value={email.email}
-                setValue={setEmail}
+                value={payloadForgotPassword.email}
+                setValue={setPayloadForgotPassword}
                 nameKey="email"
               />
               <Button

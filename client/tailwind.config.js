@@ -29,7 +29,7 @@ module.exports = {
       },
       animation: {
         "slide-up":
-          "slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+          "slide-top 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
       },
       flex: {
         2: "2 2 0%",

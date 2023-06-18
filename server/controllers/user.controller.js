@@ -206,7 +206,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   const html = `
     <h1>Reset your password</h1>
-    <p>Click this <a href=${process.env.CLIENT_URL}/api/user/reset-password/${resetToken}>link</a> to reset your password</p>
+    <p>Click this <a href=${process.env.CLIENT_URL}/reset-password/${resetToken}>link</a> to reset your password</p>
   `;
 
   const data = {
