@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Breadcrumbs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/FeatureProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/FeatureProducts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ProductCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Breadcrumbs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Breadcrumbs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CustomSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CustomSlider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/ultils/path.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/path.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +46,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.idesettings.emmet",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -60,7 +58,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687085970023</updated>
-      <workItem from="1687085977275" duration="3569000" />
+      <workItem from="1687085977275" duration="3741000" />
+      <workItem from="1687095224363" duration="169000" />
+      <workItem from="1687095422914" duration="100000" />
+      <workItem from="1687095549318" duration="100000" />
+      <workItem from="1687095683250" duration="5336000" />
     </task>
     <servers />
   </component>

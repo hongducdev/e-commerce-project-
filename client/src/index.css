@@ -7,10 +7,10 @@ body {
 }
 
 button.slick-next {
-  @apply right-[60px] z-10
+  @apply right-[60px] z-10 top-1/2 -translate-y-10
 }
 button.slick-prev {
-  @apply left-0 z-10
+  @apply left-0 z-10 top-1/2 -translate-y-10
 }
 button.slick-next::before {
   @apply bg-white bg-opacity-20 hover:bg-opacity-100 text-gray-500 hover:text-primary content-['❯'] text-3xl flex items-center justify-center h-[80px] w-[80px] 

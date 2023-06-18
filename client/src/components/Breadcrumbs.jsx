@@ -18,10 +18,12 @@ const Breadcrumbs = ({title, category}) => {
       {
         breadcrumbs
           .filter(el => !el.match.route === false)
-          .map(({ match, breadcrumb, index, self }) => (
-            <Link to={match.pathname} key={match.pathname}>
+          .map(({ match, breadcrumb}, index, self) => (
+            <Link to={match.pathname} key={match.pathname} className="text-gray-500 hover:text-primary">
               {breadcrumb}
-              {self && index !== self.length - 1 && <span className='mx-1'>/</span>}
+              {index !== self.length - 1 && <span className='mx-1'>
+                >
+              </span>}
             </Link>
           ))
       }
