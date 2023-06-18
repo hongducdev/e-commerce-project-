@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 import path from "../../ultils/path";
 import { useDispatch } from "react-redux";
 import { register } from "../../store/user/userSlice";
-import { current } from "@reduxjs/toolkit";
+import icons from "../../ultils/icons";
+
+const { AiOutlineClose } = icons;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,6 +22,7 @@ const Login = () => {
     mobile: "",
   });
   const [isRegister, setIsRegister] = useState(false);
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
 
   const handleSubmit = useCallback(async () => {
     const { firstName, lastName, mobile, ...data } = payload;
@@ -54,10 +57,54 @@ const Login = () => {
         toast.error(response.message);
       }
     }
-  }, [payload, isRegister]);
+  }, [payload, isRegister, dispatch, navigate]);
+
+  // forgot password
+  const [email, setEmail] = useState("");
+  const handleForgotPassword = async () => {
+    const response = await apis.apiForgotPassword(email);
+    if (response.success) {
+      toast.success(response.message);
+      setEmail("");
+      setIsForgotPassword(false);
+    } else {
+      toast.error(response.message);
+    }
+  };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center">
+    <div className="h-screen w-screen flex items-center justify-center relative">
+      {isForgotPassword && (
+        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-20 flex items-center justify-center">
+          <div className="bg-white min-w-[500px] p-8 rounded-lg">
+            <div className="flex justify-between">
+              <h1 className="text-3xl text-primary font-semibold mb-10 uppercase text-center">
+                Forgot Password
+              </h1>
+              <div className="">
+                <AiOutlineClose
+                  className="text-2xl cursor-pointer hover:text-primary"
+                  onClick={() => setIsForgotPassword(false)}
+                />
+              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <InputField
+                type="email"
+                placeholder="Email"
+                value={email.email}
+                setValue={setEmail}
+                nameKey="email"
+              />
+              <Button
+                name="Send Email"
+                style="w-full"
+                handleOnCLick={handleForgotPassword}
+              />
+            </div>
+          </div>
+        </div>
+      )}
       <div className="bg-white p-8 rounded-lg min-w-[500px] shadow-lg">
         <h1 className="text-3xl text-primary font-semibold mb-10 uppercase text-center">
           {isRegister ? "Register" : "Login"}
@@ -114,7 +161,10 @@ const Login = () => {
         </div>
         <div className="flex items-center justify-between text-gray-400 mt-4 text-sm cursor-pointer">
           {!isRegister && (
-            <span className="hover:text-primary hover:underline">
+            <span
+              className="hover:text-primary hover:underline"
+              onClick={() => setIsForgotPassword(true)}
+            >
               Forgot your account?
             </span>
           )}

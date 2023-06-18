@@ -6,10 +6,11 @@ const {
 } = require("../middlewares/verifyToken.middleware.js");
 
 router.post("/register", userController.register);
+router.get("/finalregister/:token", userController.finalRegister);
 router.post("/login", userController.login);
 router.post("/refreshtoken", userController.refreshAccessToken);
 router.get("/logout", userController.logout);
-router.get("/forgotpassword", userController.forgotPassword);
+router.post("/forgotpassword", userController.forgotPassword);
 router.put("/resetpassword", userController.resetToken);
 
 router.use(verifyAccessToken);

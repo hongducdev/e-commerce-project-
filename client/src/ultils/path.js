@@ -8,6 +8,8 @@ const path = {
   FAQ: "faqs",
   DETAIL_PRODUCT__PID__TITLE: "products/:pid/:title",
   DETAIL_PRODUCT: "products",
+  FINAL_REGISTER: "finalregister/:status",
+  RESET_PASSWORD: "reset-password/:token",
 
   ALL: "*",
 };

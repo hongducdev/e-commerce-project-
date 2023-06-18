@@ -5,6 +5,7 @@ export const apiRegister = async (data) => {
     url: "/user/register",
     method: "POST",
     data,
+    withCredentials: true,
   });
 };
 
@@ -13,5 +14,13 @@ export const apiLogin = async (data) => {
     url: "/user/login",
     method: "POST",
     data,
+  });
+};
+
+export const apiForgotPassword = async ({ email }) => {
+  return axios({
+    url: "/user/forgotpassword",
+    method: "POST",
+    data: { email },
   });
 };

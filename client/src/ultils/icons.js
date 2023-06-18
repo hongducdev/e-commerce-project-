@@ -1,4 +1,9 @@
-import { AiFillHome, AiFillHeart, AiOutlineMenu } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiFillHeart,
+  AiOutlineMenu,
+  AiOutlineClose,
+} from "react-icons/ai";
 import { BsStarFill, BsStar } from "react-icons/bs";
 import {
   FaPhoneAlt,
@@ -17,6 +22,7 @@ const icons = {
   AiFillHome,
   AiFillHeart,
   AiOutlineMenu,
+  AiOutlineClose,
   BsStarFill,
   BsStar,
   FaPhoneAlt,

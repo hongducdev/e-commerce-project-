@@ -7,10 +7,32 @@ const {
 } = require("../middlewares/jwt.middleware.js");
 const jwt = require("jsonwebtoken");
 const sentMail = require("../ultils/sentMail.js");
+const makeToken = require("uniqid");
+
+// const register = asyncHandler(async (req, res) => {
+//   const { email, password, firstName, lastName, mobile } = req.body;
+
+//   if (!email || !password || !firstName || !lastName || !mobile) {
+//     res.status(400).json({
+//       success: false,
+//       message: "Please fill all the fields!",
+//     });
+//   }
+
+//   const user = await User.findOne({ email });
+//   if (user) {
+//     throw new Error("User already exists!");
+//   } else {
+//     const newUser = await User.create(req.body);
+//     return res.status(200).json({
+//       success: newUser ? true : false,
+//       message: newUser ? "User created successfully!" : "User creation failed!",
+//     });
+//   }
+// });
 
 const register = asyncHandler(async (req, res) => {
   const { email, password, firstName, lastName, mobile } = req.body;
-
   if (!email || !password || !firstName || !lastName || !mobile) {
     res.status(400).json({
       success: false,
@@ -21,12 +43,67 @@ const register = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
   if (user) {
     throw new Error("User already exists!");
-  } else {
-    const newUser = await User.create(req.body);
-    return res.status(200).json({
-      success: newUser ? true : false,
-      message: newUser ? "User created successfully!" : "User creation failed!",
+  }
+
+  const token = makeToken();
+
+  res.cookie(
+    "dataregister",
+    { ...req.body, token },
+    {
+      httpOnly: true,
+      maxAge: 15 * 60 * 1000,
+    }
+  );
+
+  const html = `
+    <h1>
+      Verify your email address
+    </h1>
+    <a href=${process.env.URL_SERVER}/api/user/finalregister/${token}>Click this link to verify your email</a> <p>
+      This link will expire in 15 minutes
+    </p>
+  `;
+
+  const data = {
+    email,
+    subject: "Verify your email address",
+    html,
+  };
+
+  const rs = await sentMail(data);
+  return res.status(200).json({
+    success: true,
+    rs,
+    message: "Please check your email to verify your account!",
+  });
+});
+
+const finalRegister = asyncHandler(async (req, res) => {
+  const cookie = req.cookies;
+  const { token } = req.params;
+  if (!cookie || cookie?.dataregister?.token !== token) {
+    res.clearCookie("dataregister");
+    res.redirect(`${process.env.CLIENT_URL}/finalregister/failed`);
+    res.end();
+  }
+  if (cookie?.dataregister?.token === token) {
+    const user = await User.create({
+      email: cookie?.dataregister?.email,
+      password: cookie?.dataregister?.password,
+      firstName: cookie?.dataregister?.firstName,
+      lastName: cookie?.dataregister?.lastName,
+      mobile: cookie?.dataregister?.mobile,
     });
+    if (user) {
+      res.clearCookie("dataregister");
+      res.redirect(`${process.env.CLIENT_URL}/finalregister/success`);
+      res.end();
+    } else {
+      res.clearCookie("dataregister");
+      res.redirect(`${process.env.CLIENT_URL}/finalregister/failed`);
+      res.end();
+    }
   }
 });
 
@@ -120,7 +197,7 @@ const logout = asyncHandler(async (req, res) => {
 });
 
 const forgotPassword = asyncHandler(async (req, res) => {
-  const { email } = req.query;
+  const { email } = req.body;
   if (!email) throw new Error("Email is required");
   const user = await User.findOne({ email });
   if (!user) throw new Error("Email is not found");
@@ -129,7 +206,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
 
   const html = `
     <h1>Reset your password</h1>
-    <p>Click this <a href=${process.env.URL_SERVER}/api/user/reset-password/${resetToken}>link</a> to reset your password</p>
+    <p>Click this <a href=${process.env.CLIENT_URL}/api/user/reset-password/${resetToken}>link</a> to reset your password</p>
   `;
 
   const data = {
@@ -142,6 +219,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
   return res.status(200).json({
     success: true,
     rs,
+    message: "Please check your email to reset your password!",
   });
 });
 
@@ -310,6 +388,7 @@ const updateCart = asyncHandler(async (req, res) => {
 
 module.exports = {
   register,
+  finalRegister,
   login,
   getCurrent,
   refreshAccessToken,

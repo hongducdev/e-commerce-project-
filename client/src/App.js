@@ -5,10 +5,12 @@ import {
   Blog,
   DetailProduct,
   FAQ,
+  FinalRegister,
   Home,
   Login,
   Product,
   Public,
+  ResetPassword,
   Services,
 } from "./pages/public";
 import { useDispatch } from "react-redux";
@@ -25,6 +27,8 @@ const App = () => {
     <div className="min-h-screen">
       <Routes>
         <Route path={path.LOGIN} element={<Login />} />
+        <Route path={path.FINAL_REGISTER} element={<FinalRegister />} />
+        <Route path={path.RESET_PASSWORD} element={<ResetPassword />} />
         <Route path={path.PUBLIC} element={<Public />}>
           <Route path={path.HOME} element={<Home />} />
           <Route path={path.PRODUCTS} element={<Product />} />
