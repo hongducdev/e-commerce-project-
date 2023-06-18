@@ -1,22 +1,19 @@
+import {AiFillHeart, AiFillHome, AiOutlineClose, AiOutlineMenu,} from "react-icons/ai";
+import {BsStar, BsStarFill} from "react-icons/bs";
 import {
-  AiFillHome,
-  AiFillHeart,
-  AiOutlineMenu,
-  AiOutlineClose,
-} from "react-icons/ai";
-import { BsStarFill, BsStar } from "react-icons/bs";
-import {
-  FaPhoneAlt,
-  FaUserAlt,
-  FaShoppingBag,
-  FaRegEye,
-  FaShoppingCart,
   FaFacebookF,
-  FaTwitter,
-  FaInstagram,
   FaGoogle,
+  FaInstagram,
+  FaPhoneAlt,
+  FaRegEye,
+  FaShoppingBag,
+  FaShoppingCart,
+  FaTwitter,
+  FaUserAlt,
 } from "react-icons/fa";
-import { IoMdMail } from "react-icons/io";
+import {IoMdMail} from "react-icons/io";
+import {IoLogOutOutline} from "react-icons/io5";
+import {MdOutlineArrowBackIosNew} from "react-icons/md";
 
 const icons = {
   AiFillHome,
@@ -35,6 +32,8 @@ const icons = {
   FaInstagram,
   FaGoogle,
   IoMdMail,
+  IoLogOutOutline,
+  MdOutlineArrowBackIosNew,
 };
 
 export default icons;

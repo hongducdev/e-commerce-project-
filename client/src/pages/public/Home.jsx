@@ -1,28 +1,21 @@
-import { Link } from "react-router-dom";
-import {
-  Banner,
-  BestSeller,
-  CustomSlider,
-  DealDaily,
-  FeatureProducts,
-  Sidebar,
-} from "../../components";
-import { useSelector } from "react-redux";
+import {Link} from "react-router-dom";
+import {Banner, BestSeller, CustomSlider, DealDaily, FeatureProducts, Sidebar,} from "../../components";
+import {useSelector} from "react-redux";
 
 const Home = () => {
-  const { newProducts } = useSelector((state) => state.products);
-  const { categories } = useSelector((state) => state.app);
+  const {newProducts} = useSelector((state) => state.products);
+  const {categories} = useSelector((state) => state.app);
 
   return (
-    <div>
+    <div className="w-main mx-auto mt-5">
       <div className="w-main flex">
         <div className="flex flex-col gap-5 w-[25%] flex-auto">
-          <Sidebar />
-          <DealDaily />
+          <Sidebar/>
+          <DealDaily/>
         </div>
         <div className="flex flex-col gap-5 pl-5 w-[75%] flex-auto justify-between">
-          <Banner />
-          <BestSeller />
+          <Banner/>
+          <BestSeller/>
           <div className="flex items-center gap-x-5">
             <Link to="/">
               <img
@@ -32,13 +25,13 @@ const Home = () => {
               />
             </Link>
             <Link to="/">
-              <img src="/macbook.webp" alt="" className="w-full rounded-md" />
+              <img src="/macbook.webp" alt="" className="w-full rounded-md"/>
             </Link>
           </div>
         </div>
       </div>
       <div className="my-5">
-        <FeatureProducts />
+        <FeatureProducts/>
       </div>
       <div className="w-full flex gap-5 justify-between">
         <div className="">
@@ -68,7 +61,7 @@ const Home = () => {
         </div>
         <div className="">
           <Link to="/">
-            <img src="/olloclip.webp" alt="olloclip" className="rounded-md" />
+            <img src="/olloclip.webp" alt="olloclip" className="rounded-md"/>
           </Link>
         </div>
       </div>
@@ -79,7 +72,7 @@ const Home = () => {
           </h3>
         </div>
         <div className="mt-5 mx-[-10px]">
-          <CustomSlider products={newProducts} isNew />
+          <CustomSlider products={newProducts} isNew/>
         </div>
       </div>
       <div className="my-5">
@@ -131,7 +124,7 @@ const Home = () => {
             blog posts
           </h3>
         </div>
-        </div>
+      </div>
       <div className="w-full h-[200px]"></div>
     </div>
   );

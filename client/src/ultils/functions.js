@@ -33,3 +33,52 @@ export const renderStartFromNumber = (number) => {
 
   return stars;
 };
+
+export const validate = (payload, setInvalidFields) => {
+  let invalids = 0;
+  const formatPayload = Object.entries(payload);
+  for (let arr of formatPayload) {
+    if (arr[1].trim() === "") {
+      invalids++;
+      setInvalidFields((prev) => [
+        ...prev,
+        { name: arr[0], message: "This field is required" },
+      ]);
+    }
+  }
+  for (let arr of formatPayload) {
+    switch (arr[0]) {
+      case "email":
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!arr[1].match(regex)) {
+          invalids++;
+          setInvalidFields((prev) => [
+            ...prev,
+            {
+              name: arr[0],
+              message: "Email is invalid",
+            },
+          ]);
+        }
+        break;
+
+      case "password":
+        if (arr[1].length < 6) {
+          invalids++;
+          setInvalidFields((prev) => [
+            ...prev,
+            {
+              name: arr[0],
+              message: "Password must be at least 6 characters",
+            },
+          ]);
+        }
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  return invalids;
+};

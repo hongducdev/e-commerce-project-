@@ -1,15 +1,18 @@
 /* eslint-disable react/style-prop-object */
-import React, { useCallback, useState } from "react";
-import { Button, InputField } from "../../components";
+import React, {useCallback, useEffect, useState} from "react";
+import {Button, InputField} from "../../components";
 import * as apis from "../../apis";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
+import {Link, useNavigate} from "react-router-dom";
 import path from "../../ultils/path";
-import { useDispatch } from "react-redux";
-import { register } from "../../store/user/userSlice";
+import {useDispatch} from "react-redux";
+import {login} from "../../store/user/userSlice";
 import icons from "../../ultils/icons";
+import {validate} from "../../ultils/functions";
 
-const { AiOutlineClose } = icons;
+const {MdOutlineArrowBackIosNew} = icons;
+
+const {AiOutlineClose} = icons;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,38 +26,57 @@ const Login = () => {
   });
   const [isRegister, setIsRegister] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const [invalidFields, setInvalidFields] = useState([]);
+
+  useEffect(() => {
+    setPayload({
+      email: "",
+      password: "",
+      firstName: "",
+      lastName: "",
+      mobile: "",
+    });
+  }, [isRegister, isForgotPassword]);
 
   const handleSubmit = useCallback(async () => {
-    const { firstName, lastName, mobile, ...data } = payload;
-    if (isRegister) {
-      const response = await apis.apiRegister(payload);
-      if (response?.success) {
-        toast.success(response?.message);
-        setPayload({
-          email: "",
-          password: "",
-          firstName: "",
-          lastName: "",
-          mobile: "",
-        });
-        setIsRegister(false);
+    const {firstName, lastName, mobile, ...data} = payload;
+
+    const invalids = isRegister
+      ? validate(payload, setInvalidFields)
+      : validate(data, setInvalidFields);
+    console.log("🚀 ~ handleSubmit ~ invalids:", invalids);
+
+    if (invalids === 0) {
+      if (isRegister) {
+        console.log("register");
+        const response = await apis.apiRegister(payload);
+        if (response?.success) {
+          toast.success(response?.message);
+          setPayload({
+            email: "",
+            password: "",
+            firstName: "",
+            lastName: "",
+            mobile: "",
+          });
+          setIsRegister(false);
+        } else {
+          toast.error(response?.message);
+        }
       } else {
-        toast.error(response?.message);
-      }
-    } else {
-      const response = await apis.apiLogin(data);
-      if (response.success) {
-        toast.success(response.message);
-        dispatch(
-          register({
-            isLogin: true,
-            token: response.accessToken,
-            userData: response.userData,
-          })
-        );
-        navigate(`/${path.HOME}`);
-      } else {
-        toast.error(response.message);
+        const response = await apis.apiLogin(data);
+        if (response.success) {
+          toast.success(response.message);
+          dispatch(
+            login({
+              isLogin: true,
+              token: response.accessToken,
+            })
+          );
+          navigate(`/${path.HOME}`);
+        } else {
+          toast.error(response.message);
+        }
       }
     }
   }, [payload, isRegister, dispatch, navigate]);
@@ -80,8 +102,15 @@ const Login = () => {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center relative">
+      <div className="absolute top-10 left-10">
+        <Link to={`/${path.HOME}`} className="flex items-center gap-3 hover:text-primary">
+          <MdOutlineArrowBackIosNew/>
+          Back to Home
+        </Link>
+      </div>
       {isForgotPassword && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-20 flex items-center justify-center animate-slide-up">
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-20 flex items-center justify-center animate-slide-up">
           <div className="bg-white min-w-[500px] p-8 rounded-lg">
             <div className="flex justify-between">
               <h1 className="text-3xl text-primary font-semibold mb-10 uppercase text-center">
@@ -101,6 +130,8 @@ const Login = () => {
                 value={payloadForgotPassword.email}
                 setValue={setPayloadForgotPassword}
                 nameKey="email"
+                invalidFields={invalidFields}
+                setInvalidFields={setInvalidFields}
               />
               <Button
                 name="Send Email"
@@ -126,6 +157,8 @@ const Login = () => {
                   value={payload.firstName}
                   setValue={setPayload}
                   nameKey="firstName"
+                  invalidFields={invalidFields}
+                  setInvalidFields={setInvalidFields}
                 />
                 <InputField
                   type="text"
@@ -133,6 +166,8 @@ const Login = () => {
                   value={payload.lastName}
                   setValue={setPayload}
                   nameKey="lastName"
+                  invalidFields={invalidFields}
+                  setInvalidFields={setInvalidFields}
                 />
               </div>
               <InputField
@@ -141,6 +176,8 @@ const Login = () => {
                 value={payload.mobile}
                 setValue={setPayload}
                 nameKey="mobile"
+                invalidFields={invalidFields}
+                setInvalidFields={setInvalidFields}
               />
             </div>
           )}
@@ -150,6 +187,8 @@ const Login = () => {
             value={payload.email}
             setValue={setPayload}
             nameKey="email"
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
           <InputField
             type="password"
@@ -157,6 +196,8 @@ const Login = () => {
             value={payload.password}
             setValue={setPayload}
             nameKey="password"
+            invalidFields={invalidFields}
+            setInvalidFields={setInvalidFields}
           />
 
           <Button
