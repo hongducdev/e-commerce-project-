@@ -1,11 +1,12 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import * as apis from "../../apis";
 import {
-  Breadcrumbs
+  Breadcrumbs, Button, SelectQuantity
 } from "../../components";
 import Slider from "react-slick";
 import ReactImageMagnify from 'react-image-magnify';
+import {formatMoney, renderStartFromNumber} from "../../ultils/functions";
 
 var settings = {
   // dots: true,
@@ -19,6 +20,7 @@ const DetailProduct = () => {
   const {pid} = useParams();
   const [product, setProduct] = useState([]);
   const [image, setImage] = useState('');
+  const [quantity, setQuantity] = useState(1);
   const getProduct = async () => {
     const response = await apis.apiGetProduct(pid);
     console.log(response.productData);
@@ -34,6 +36,26 @@ const DetailProduct = () => {
     };
   }, [pid]);
 
+  const handleQuantity = useCallback((number) => {
+    if(Number(number) < 1 || !Number(number)) {
+      return;
+    } else {
+      setQuantity(number)
+    }
+  }, [quantity])
+
+  const handleChangeQuantity = useCallback((type) => {
+    if(type === "minus" && quantity === 1) {
+      return;
+    }
+    if(type === "plus") {
+      setQuantity(prev => +prev + 1)
+    }
+    if(type === "minus") {
+      setQuantity(prev => +prev - 1)
+    }
+  }, [quantity])
+
   return (
     <div className="w-full">
       <div className="w-full bg-gray-100 h-[81px] flex items-center justify-center">
@@ -43,7 +65,7 @@ const DetailProduct = () => {
         </div>
       </div>
       <div className="w-main mx-auto">
-        <div className="flex mt-5">
+        <div className="flex mt-5 gap-10">
           <div className="w-2/5">
             <div>
               <div className="object-cover border border-gray-300 rounded-md">
@@ -67,7 +89,7 @@ const DetailProduct = () => {
                       () => setImage(image)
                     }>
                       <img src={image} alt="thumbnail"
-                           className="object-cover border border-gray-300 rounded-md"/>
+                           className="object-cover border border-gray-300 rounded-md cursor-pointer"/>
                     </div>
                   ))}
                 </Slider>
@@ -75,7 +97,42 @@ const DetailProduct = () => {
 
             </div>
           </div>
-          <div className="w-2/5">info</div>
+          <div className="w-2/5">
+            <h3 className="text-3xl font-semibold">
+              {formatMoney(product?.price)}
+            </h3>
+            <div className="mt-4 flex items-center gap-2">
+              <span className="flex items-center text-lg">
+                {renderStartFromNumber(product?.totalRatings)}
+              </span>
+              <span className="text-sm text-gray-600">
+                {product.ratings?.length} reviews
+              </span>
+              <span className="text-sm text-gray-600 px-3 border-l border-gray-400">
+                ({product?.sold} sold)
+              </span>
+            </div>
+            <div className="mt-5">
+              <ul className="list-disc flex flex-col gap-1 pl-4">
+                {
+                  product?.description?.map((item, index) => (
+                    <li key={index} className="text-sm text-gray-600">
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div className="mt-5 flex items-center gap-4">
+              <span className="font-semibold">
+                Quantity:
+              </span>
+              <SelectQuantity quantity={quantity} handleQuantity={handleQuantity} handleChangeQuantity={handleChangeQuantity} />
+            </div>
+            <div>
+              <Button name="Add to cart" style="w-full uppercase"/>
+            </div>
+          </div>
           <div className="w-1/5">pr</div>
         </div>
       </div>
