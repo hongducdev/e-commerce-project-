@@ -45,9 +45,9 @@ var productSchema = new mongoose.Schema(
       type: Array,
     },
     color: {
-      type: String,
+      type: Array,
       required: true,
-      default: "Black",
+      default: ["Black"],
     },
     ratings: [
       {

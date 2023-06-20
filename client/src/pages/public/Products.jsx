@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { Breadcrumbs, Product, SearchItem } from "../../components";
 import { useCallback, useEffect, useState } from "react";
 import * as apis from "../../apis";
@@ -7,17 +7,25 @@ const Products = () => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [activeClick, setActiveClick] = useState(null);
+  const [params] = useSearchParams();
 
   const fetchProducts = async (queries) => {
-    const response = await apis.getProducts({ category: category });
-    console.log(response);
+    const response = await apis.getProducts(queries);
     if (response.success) {
       setProducts(response.productData);
     }
   };
 
   useEffect(() => {
-    fetchProducts();
+    let param = []
+    for(let i of params.entries()) {
+      param.push(i)
+    }
+    const queries = {}
+    for(let i of param) {
+      queries[i[0]] = i[1]
+    }
+    fetchProducts(queries);
   }, [category]);
 
   const changeActiveFilter = useCallback(
@@ -48,11 +56,13 @@ const Products = () => {
                 name="price"
                 activeClick={activeClick}
                 changeActiveFilter={changeActiveFilter}
+                type="input"
               />
               <SearchItem
                 name="color"
                 activeClick={activeClick}
                 changeActiveFilter={changeActiveFilter}
+                type="checkbox"
               />
             </div>
           </div>
