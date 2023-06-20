@@ -1,4 +1,4 @@
-import { memo } from "react";
+import {memo} from "react";
 
 const SelectQuantity = ({ quantity, handleQuantity, handleChangeQuantity }) => {
   const handleInputChange = (e) => {
@@ -6,7 +6,7 @@ const SelectQuantity = ({ quantity, handleQuantity, handleChangeQuantity }) => {
   };
 
   return (
-    <div className="flex items-center bg-gray-200 rounded-md">
+    <div className="flex items-center bg-gray-100 rounded-md">
       <span
         className="p-2 cursor-pointer text-lg border-r border-gray-600 hover:bg-grayDark rounded-l-md hover:text-white select-none"
         onClick={() => handleChangeQuantity("minus")}

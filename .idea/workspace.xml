@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/SelectQuantity.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/ProductExtraInfoItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/ProductInformation.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SelectQuantity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SelectQuantity.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/ultils/contants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/contants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/ultils/icons.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/icons.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +36,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ReactCreateComponentLastSelected&quot;: &quot;arrowFunctionComponent&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -42,10 +47,18 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.idesettings.emmet&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,14 +72,31 @@
       <workItem from="1687095422914" duration="100000" />
       <workItem from="1687095549318" duration="100000" />
       <workItem from="1687095683250" duration="5336000" />
-      <workItem from="1687144405949" duration="7174000" />
+      <workItem from="1687144405949" duration="9200000" />
+      <workItem from="1687179137150" duration="239000" />
+      <workItem from="1687179409400" duration="5772000" />
+      <workItem from="1687224512104" duration="3111000" />
     </task>
+    <task id="LOCAL-00001" summary="✨ Complete Info and change quantity product in DetailProduct.jsx">
+      <created>1687171426527</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1687171426527</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="✨ Complete Info and change quantity product in DetailProduct.jsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="✨ Complete Info and change quantity product in DetailProduct.jsx" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -2,11 +2,17 @@ import {useCallback, useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import * as apis from "../../apis";
 import {
-  Breadcrumbs, Button, SelectQuantity
+  Breadcrumbs,
+  Button,
+  CustomSlider,
+  ProductExtraInfoItem,
+  ProductInformation,
+  SelectQuantity
 } from "../../components";
 import Slider from "react-slick";
 import ReactImageMagnify from 'react-image-magnify';
 import {formatMoney, renderStartFromNumber} from "../../ultils/functions";
+import {productExtraInfo} from "../../ultils/contants";
 
 var settings = {
   // dots: true,
@@ -17,27 +23,37 @@ var settings = {
 };
 
 const DetailProduct = () => {
-  const {pid} = useParams();
+  const {pid, category} = useParams();
   const [product, setProduct] = useState([]);
   const [image, setImage] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const getProduct = async () => {
     const response = await apis.apiGetProduct(pid);
-    console.log(response.productData);
     if (response.success) {
       setProduct(response.productData);
       setImage(response.productData.thumb);
     }
   };
 
+  const getProducts = async () => {
+    const response = await apis.getProducts({
+      category: category
+    });
+    if (response.success) {
+      setRelatedProducts(response.productData);
+    }
+  };
+
   useEffect(() => {
     return () => {
       getProduct();
+      getProducts();
     };
-  }, [pid]);
+  }, [pid, category]);
 
   const handleQuantity = useCallback((number) => {
-    if(Number(number) < 1 || !Number(number)) {
+    if (Number(number) < 1 || !Number(number)) {
       return;
     } else {
       setQuantity(number)
@@ -45,13 +61,13 @@ const DetailProduct = () => {
   }, [quantity])
 
   const handleChangeQuantity = useCallback((type) => {
-    if(type === "minus" && quantity === 1) {
+    if (type === "minus" && quantity === 1) {
       return;
     }
-    if(type === "plus") {
+    if (type === "plus") {
       setQuantity(prev => +prev + 1)
     }
-    if(type === "minus") {
+    if (type === "minus") {
       setQuantity(prev => +prev - 1)
     }
   }, [quantity])
@@ -127,13 +143,35 @@ const DetailProduct = () => {
               <span className="font-semibold">
                 Quantity:
               </span>
-              <SelectQuantity quantity={quantity} handleQuantity={handleQuantity} handleChangeQuantity={handleChangeQuantity} />
+              <SelectQuantity quantity={quantity} handleQuantity={handleQuantity}
+                              handleChangeQuantity={handleChangeQuantity}/>
             </div>
             <div>
               <Button name="Add to cart" style="w-full uppercase"/>
             </div>
           </div>
-          <div className="w-1/5">pr</div>
+          <div className="w-1/5 flex flex-col gap-[10px]">
+            {
+              productExtraInfo.map(item => (
+                <ProductExtraInfoItem key={item.id} title={item.title} description={item.description} icon={item.icon}/>
+              ))
+            }
+          </div>
+        </div>
+        <div className="">
+          <ProductInformation/>
+        </div>
+        <div className="my-5">
+          <div className="w-full border-b-2 border-primary">
+            <h3 className="text-grayDark uppercase text-xl font-semibold py-4">
+              other customers also buy:
+            </h3>
+          </div>
+          <div className="mt-5 mx-[-10px]">
+            <CustomSlider products={
+              relatedProducts
+            } />
+          </div>
         </div>
       </div>
       <div className="h-[200px] w-full"></div>
