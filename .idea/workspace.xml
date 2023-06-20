@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/ProductExtraInfoItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/ProductInformation.jsx" afterDir="false" />
+    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="✨ Complete page DetailProduct.jsx">
+      <change afterPath="$PROJECT_DIR$/client/src/pages/public/Products.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SelectQuantity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SelectQuantity.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/ultils/contants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/contants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/ultils/icons.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/icons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Breadcrumbs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Breadcrumbs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/public/Product.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/public/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/public/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/ultils/path.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/path.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,8 @@
       <workItem from="1687144405949" duration="9200000" />
       <workItem from="1687179137150" duration="239000" />
       <workItem from="1687179409400" duration="5772000" />
-      <workItem from="1687224512104" duration="3111000" />
+      <workItem from="1687224512104" duration="5298000" />
+      <workItem from="1687240439761" duration="1197000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Complete Info and change quantity product in DetailProduct.jsx">
       <created>1687171426527</created>
@@ -84,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687171426527</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="✨ Complete page DetailProduct.jsx">
+      <created>1687232246411</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687232246411</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,7 +104,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="✨ Complete Info and change quantity product in DetailProduct.jsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="✨ Complete Info and change quantity product in DetailProduct.jsx" />
+    <MESSAGE value="✨ Complete page DetailProduct.jsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="✨ Complete page DetailProduct.jsx" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

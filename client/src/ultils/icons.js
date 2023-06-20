@@ -17,7 +17,10 @@ import {
 } from "react-icons/fa";
 import {IoMdMail} from "react-icons/io";
 import {IoLogOutOutline} from "react-icons/io5";
-import {MdOutlineArrowBackIosNew} from "react-icons/md";
+import {
+  MdOutlineArrowBackIosNew,
+  MdOutlineKeyboardArrowDown,
+} from "react-icons/md";
 
 const icons = {
   AiFillHome,
@@ -42,6 +45,7 @@ const icons = {
   IoMdMail,
   IoLogOutOutline,
   MdOutlineArrowBackIosNew,
+  MdOutlineKeyboardArrowDown,
 };
 
 export default icons;

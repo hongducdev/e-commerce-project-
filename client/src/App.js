@@ -8,7 +8,7 @@ import {
   FinalRegister,
   Home,
   Login,
-  Product,
+  Products,
   Public,
   ResetPassword,
   Services,
@@ -31,7 +31,7 @@ const App = () => {
         <Route path={path.RESET_PASSWORD} element={<ResetPassword />} />
         <Route path={path.PUBLIC} element={<Public />}>
           <Route path={path.HOME} element={<Home />} />
-          <Route path={path.PRODUCTS} element={<Product />} />
+          <Route path={path.PRODUCTS} element={<Products />} />
           <Route path={path.BLOGS} element={<Blog />} />
           <Route path={path.FAQ} element={<FAQ />} />
           <Route path={path.OUR_SERVICES} element={<Services />} />

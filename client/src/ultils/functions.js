@@ -19,8 +19,8 @@ export const formatMoney = (money) => {
 };
 
 export const renderStartFromNumber = (number) => {
-  if (!Number(number)) return;
-  if (number < 0 || number > 5) return;
+  if (isNaN(number) || number < 0 || number > 5) return null;
+
   const stars = [];
 
   for (let i = 1; i <= 5; i++) {
