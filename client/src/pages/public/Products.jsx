@@ -26,7 +26,7 @@ const Products = () => {
       queries[i[0]] = i[1]
     }
     fetchProducts(queries);
-  }, [category]);
+  }, [category, params]);
 
   const changeActiveFilter = useCallback(
     (name) => {
