@@ -3,9 +3,13 @@ import React, { useEffect } from "react";
 const useDebounce = (value, ms) => {
   const [debounceValue, setDebounceValue] = React.useState("");
   useEffect(() => {
-    setTimeout(() => {
+    const setTimeoutId = setTimeout(() => {
       setDebounceValue(value);
     }, ms);
+
+    return () => {
+      clearTimeout(setTimeoutId);
+    };
   }, [value, ms]);
 
   return debounceValue;

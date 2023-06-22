@@ -36,8 +36,8 @@ module.exports = {
         3: "3 3 0%",
         4: "4 4 0%",
         5: "5 5 0%",
-      }
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")({ strategy: "class" })],
 };

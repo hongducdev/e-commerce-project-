@@ -1,13 +1,7 @@
 import path from "./path";
 import icons from "./icons";
 
-const {
-  FaShieldAlt,
-  FaShippingFast,
-  FaGift,
-  FaReply,
-  FaPhoneAlt
-} = icons;
+const { FaShieldAlt, FaShippingFast, FaGift, FaReply, FaPhoneAlt } = icons;
 
 export const navigation = [
   {
@@ -42,67 +36,105 @@ export const productExtraInfo = [
     id: 0,
     title: "Guarantee",
     description: "Quality Checked",
-    icon: <FaShieldAlt/>,
+    icon: <FaShieldAlt />,
   },
   {
     id: 1,
     title: "Free Shipping",
     description: "Free On All Products",
-    icon: <FaShippingFast/>,
+    icon: <FaShippingFast />,
   },
   {
     id: 2,
     title: "Special Gift Cards",
     description: "Special Gift Cards",
-    icon: <FaGift/>,
+    icon: <FaGift />,
   },
   {
     id: 3,
     title: "Free Return",
     description: "Within 7 Days",
-    icon: <FaReply/>,
+    icon: <FaReply />,
   },
   {
     id: 4,
     title: "Consultancy",
     description: "Lifetime 24/7",
-    icon: <FaPhoneAlt/>,
-  }
-]
+    icon: <FaPhoneAlt />,
+  },
+];
 
 export const productInfoTabs = [
   {
     id: 0,
     title: "Description",
-    content: "text-1"
+    content: "text-1",
   },
   {
     id: 1,
     title: "Warranty",
-    content: "text-2"
+    content: "text-2",
   },
   {
     id: 2,
     title: "Delivery",
-    content: "text-3"
+    content: "text-3",
   },
   {
     id: 3,
     title: "Payment",
-    content: "text-4"
+    content: "text-4",
   },
   {
     id: 4,
     title: "Customer Reviews",
-  }
-]
+  },
+];
 
 export const colors = [
-  'black',
-  'white',
-  'gray',
-  'red',
-  'blue',
-  'yellow',
-  'green',
-]
+  "black",
+  "white",
+  "gray",
+  "red",
+  "blue",
+  "yellow",
+  "green",
+];
+
+export const sortOptions = [
+  {
+    id: 1,
+    value: "-sold",
+    text: "Best Selling",
+  },
+  {
+    id: 2,
+    value: "title",
+    text: "Alphabetically, A-Z",
+  },
+  {
+    id: 3,
+    value: "-title",
+    text: "Alphabetically, Z-A",
+  },
+  {
+    id: 4,
+    value: "price",
+    text: "Price, low to high",
+  },
+  {
+    id: 5,
+    value: "-price",
+    text: "Price, high to low",
+  },
+  {
+    id: 6,
+    value: "createdAt",
+    text: "Date, new to old",
+  },
+  {
+    id: 7,
+    value: "-createdAt",
+    text: "Date, old to new",
+  },
+];

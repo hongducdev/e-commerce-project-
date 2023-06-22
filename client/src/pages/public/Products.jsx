@@ -1,12 +1,19 @@
 import { useParams, useSearchParams } from "react-router-dom";
-import { Breadcrumbs, Product, SearchItem } from "../../components";
+import {
+  Breadcrumbs,
+  Product,
+  SearchItem,
+  SelectOptions,
+} from "../../components";
 import { useCallback, useEffect, useState } from "react";
 import * as apis from "../../apis";
+import { sortOptions } from "../../ultils/contants";
 
 const Products = () => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   const [activeClick, setActiveClick] = useState(null);
+  const [sort, setSort] = useState("");
   const [params] = useSearchParams();
 
   const fetchProducts = async (queries) => {
@@ -17,14 +24,25 @@ const Products = () => {
   };
 
   useEffect(() => {
-    let param = []
-    for(let i of params.entries()) {
-      param.push(i)
+    let param = [];
+    for (let i of params.entries()) {
+      param.push(i);
     }
-    const queries = {}
-    for(let i of param) {
-      queries[i[0]] = i[1]
+    const queries = {};
+    for (let i of param) {
+      queries[i[0]] = i[1];
     }
+
+    if (queries.from) {
+      queries.price = { ...queries.price, gte: queries.from };
+      delete queries.from;
+    }
+
+    if (queries.to) {
+      queries.price = { ...queries.price, lte: queries.to };
+      delete queries.to;
+    }
+
     fetchProducts(queries);
   }, [category, params]);
 
@@ -38,6 +56,18 @@ const Products = () => {
     },
     [activeClick]
   );
+
+  const changeValue = useCallback((value) => {
+    setSort(value);
+  }, [sort])
+
+  useEffect(() => {
+    const queries = {};
+    if (sort) {
+      queries.sort = sort;
+    }
+    fetchProducts(queries);
+  }, [sort]);
 
   return (
     <div className="w-full">
@@ -66,7 +96,10 @@ const Products = () => {
               />
             </div>
           </div>
-          <div className="w-1/5 flex-auto">sort</div>
+          <div className="w-1/5 flex-auto flex-col flex gap-3">
+            <span className="text-sm font-semibold">Sort by</span>
+            <SelectOptions value={sort} options={sortOptions} changeValue={changeValue} />
+          </div>
         </div>
         <div className="grid grid-cols-4 gap-5 mt-4 ">
           {products.map((product) => (

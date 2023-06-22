@@ -4,6 +4,8 @@ import { colors } from "../ultils/contants";
 import { createSearchParams, useNavigate, useParams } from "react-router-dom";
 import * as apis from "../apis";
 import { formatMoney } from "../ultils/functions";
+import useDebounce from "../hooks/useDebounce";
+import { toast } from "react-toastify";
 
 const { MdOutlineKeyboardArrowDown } = icons;
 
@@ -17,7 +19,10 @@ const SearchItem = ({
   const { category } = useParams();
   const [selected, setSelected] = useState([]);
   const [bestPrice, setBestPrice] = useState(null);
-  const [price, setPrice] = useState([0, 0])
+  const [price, setPrice] = useState({
+    from: "",
+    to: "",
+  });
 
   const handleSelect = (e) => {
     const alreadyEl = selected.find((el) => el === e.target.value);
@@ -60,23 +65,28 @@ const SearchItem = ({
     }
   }, [type]);
 
+  const debouncePriceFrom = useDebounce(price.from, 500);
+  const debouncePriceTo = useDebounce(price.to, 500);
+
   useEffect(() => {
+    const data = {};
 
-    const validPrice = price.filter(el => +el > 0)
-
-    if (price.length > 0) {
-      naviagte({
-        pathName: category,
-        search: createSearchParams({
-          color: selected.join(","),
-        }).toString(),
-      });
-    } else {
-      naviagte({
-        pathName: category,
-      });
+    if (Number(price.from) > 0) {
+      data.from = Number(price.from);
     }
-  }, [price]);
+    if (Number(price.to) > 0) {
+      data.to = Number(price.to);
+    }
+
+    if (price.from && price.to && Number(price.from) > Number(price.to)) {
+      toast.error("Price from must be less than price to");
+    }
+
+    naviagte({
+      pathName: `/${category}`,
+      search: createSearchParams(data).toString(),
+    });
+  }, [debouncePriceFrom, debouncePriceTo, naviagte]);
 
   return (
     <div
@@ -127,7 +137,15 @@ const SearchItem = ({
                 <span className="">
                   The highest price is {formatMoney(bestPrice)}
                 </span>
-                <span className="underline cursor-pointer text-gray-700">
+                <span
+                  className="underline cursor-pointer text-gray-700"
+                  onClick={() => {
+                    setPrice({
+                      from: "",
+                      to: "",
+                    });
+                  }}
+                >
                   Reset
                 </span>
               </div>
@@ -138,9 +156,9 @@ const SearchItem = ({
                     type="number"
                     className="bg-gray-100 outline-none p-[10px] rounded-md"
                     placeholder="From"
-                    value={price[0]}
+                    value={price.from}
                     onChange={(e) =>
-                      setPrice(prev => prev.map((el, index) => index === 0 ? e.target.value : el))
+                      setPrice((prev) => ({ ...prev, from: e.target.value }))
                     }
                   />
                 </div>
@@ -150,9 +168,9 @@ const SearchItem = ({
                     type="number"
                     className="bg-gray-100 outline-none p-[10px] rounded-md"
                     placeholder="To"
-                    value={price[1]}
+                    value={price.to}
                     onChange={(e) =>
-                      setPrice(prev => prev.map((el, index) => index === 1 ? e.target.value : el))
+                      setPrice((prev) => ({ ...prev, to: e.target.value }))
                     }
                   />
                 </div>
