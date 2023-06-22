@@ -85,10 +85,6 @@ export const productInfoTabs = [
     title: "Payment",
     content: "text-4",
   },
-  {
-    id: 4,
-    title: "Customer Reviews",
-  },
 ];
 
 export const colors = [

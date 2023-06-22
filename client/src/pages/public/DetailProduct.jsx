@@ -176,7 +176,7 @@ const DetailProduct = () => {
           </div>
         </div>
         <div className="">
-          <ProductInformation />
+          <ProductInformation totalRating={product.totalRatings} totalCount={18} />
         </div>
         <div className="my-5">
           <div className="w-full border-b-2 border-primary">
