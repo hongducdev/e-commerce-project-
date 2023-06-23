@@ -22,3 +22,5 @@ export { default as SearchItem } from "./SearchItem";
 export { default as SelectOptions } from "./SelectOptions";
 export { default as Votebar } from "./Votebar";
 export { default as Ratings } from "./Ratings";
+export { default as VoteOptions } from "./VoteOptions";
+export { default as Modal } from "./Modal";

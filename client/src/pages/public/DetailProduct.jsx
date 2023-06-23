@@ -82,7 +82,7 @@ const DetailProduct = () => {
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <div className="w-full bg-gray-100 h-[81px] flex items-center justify-center">
         <div className="w-main">
           <h3 className="text-lg font-semibold">{product?.title}</h3>
@@ -176,7 +176,11 @@ const DetailProduct = () => {
           </div>
         </div>
         <div className="">
-          <ProductInformation totalRating={product.totalRatings} totalCount={18} />
+          <ProductInformation
+            totalRating={product.totalRatings}
+            totalCount={product?.ratings?.length}
+            nameProduct={product.title}
+          />
         </div>
         <div className="my-5">
           <div className="w-full border-b-2 border-primary">

@@ -2,14 +2,19 @@ import { memo, useState } from "react";
 import { productInfoTabs } from "../ultils/contants";
 import Votebar from "./Votebar";
 import { renderStartFromNumber } from "../ultils/functions";
+import Button from "./Button";
+import { useDispatch } from "react-redux";
+import { showModal } from "../store/app/appSlice";
+import VoteOptions from "./VoteOptions";
 
-const ProductInformation = ({ totalRating, totalCount }) => {
+const ProductInformation = ({ totalRating, totalCount, nameProduct }) => {
   const activeClass =
     "uppercase text-lg bg-white px-4 rounded-t-md py-2 border-t border-l border-r border-gray-300 hover:bg-white cursor-pointer";
   const notActiveClass =
     "uppercase text-lg bg-gray-200 px-4 rounded-t-md py-2 border border-gray-300 hover:bg-white cursor-pointer";
 
   const [activeTab, setActiveTab] = useState(0);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -35,23 +40,39 @@ const ProductInformation = ({ totalRating, totalCount }) => {
           <p key={tab.id}>{activeTab === tab.id && tab.content}</p>
         ))}
         {activeTab === 4 && (
-          <div className="flex border border-gray-300 rounded-md p-4 items-center">
-            <div className="flex-4 flex items-center justify-center flex-col">
-              <span className="text-2xl font-semibold">{totalRating}/5</span>
-              <span className="flex items-center gap-1">{renderStartFromNumber(totalRating)}</span>
-              <span className="">
-								{totalCount} ratings and reviewers
-							</span>
+          <div>
+            <div className="flex border border-gray-300 rounded-md p-4 items-center">
+              <div className="flex-4 flex items-center justify-center flex-col">
+                <span className="text-2xl font-semibold">{totalRating}/5</span>
+                <span className="flex items-center gap-1">
+                  {renderStartFromNumber(totalRating)}
+                </span>
+                <span className="">{totalCount} ratings and reviewers</span>
+              </div>
+              <div className="flex-6 flex flex-col-reverse gap-2">
+                {Array.from(Array(5).keys()).map((item) => (
+                  <Votebar
+                    key={item}
+                    number={item + 1}
+                    ratingTotal={5}
+                    ratingCount={2}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="flex-6 flex flex-col-reverse gap-2">
-              {Array.from(Array(5).keys()).map((item) => (
-                <Votebar
-                  key={item}
-                  number={item + 1}
-                  ratingTotal={5}
-                  ratingCount={2}
-                />
-              ))}
+            <div className="flex flex-col items-center justify-center text-sm p-4 gap-2">
+              <span className="">Have you rated this product?</span>
+              <Button
+                name="Write a review"
+                handleOnCLick={() =>
+                  dispatch(
+                    showModal({
+                      isShowModal: true,
+                      modalChildren: <VoteOptions nameProduct={nameProduct} />,
+                    })
+                  )
+                }
+              />
             </div>
           </div>
         )}
