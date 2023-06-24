@@ -7,7 +7,7 @@ const Votebar = ({ number, ratingCount, ratingTotal }) => {
   const percentRef = useRef(null);
 
   useEffect(() => {
-    const percent = (ratingCount / ratingTotal) * 100;
+    const percent = (ratingCount / ratingTotal) * 100 || 0;
     percentRef.current.style.right = `${100 - percent}%`;
   }, [ratingCount, ratingTotal]);
 

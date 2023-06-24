@@ -28,6 +28,7 @@ const DetailProduct = () => {
   const [image, setImage] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   const getProduct = async () => {
     const response = await apis.apiGetProduct(pid);
@@ -53,7 +54,14 @@ const DetailProduct = () => {
     };
 
     fetchData();
+    window.scrollTo(0, 0);
   }, [pid, slug, category]);
+
+  useEffect(() => {
+    if (pid) {
+      getProduct();
+    }
+  }, [update]);
 
   const handleQuantity = useCallback(
     (number) => {
@@ -65,6 +73,10 @@ const DetailProduct = () => {
     },
     [quantity]
   );
+
+  const rerender = useCallback(() => {
+    setUpdate((prev) => !prev);
+  }, [update]);
 
   const handleChangeQuantity = useCallback(
     (type) => {
@@ -178,8 +190,10 @@ const DetailProduct = () => {
         <div className="">
           <ProductInformation
             totalRating={product.totalRatings}
-            totalCount={product?.ratings?.length}
+            ratings={product?.ratings}
             nameProduct={product.title}
+            pid={product._id}
+            rerender={rerender}
           />
         </div>
         <div className="my-5">

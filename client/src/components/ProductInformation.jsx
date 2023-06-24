@@ -3,11 +3,15 @@ import { productInfoTabs } from "../ultils/contants";
 import Votebar from "./Votebar";
 import { renderStartFromNumber } from "../ultils/functions";
 import Button from "./Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "../store/app/appSlice";
 import VoteOptions from "./VoteOptions";
+import * as apis from "../apis";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import path from "../ultils/path";
 
-const ProductInformation = ({ totalRating, totalCount, nameProduct }) => {
+const ProductInformation = ({ totalRating, ratings, nameProduct, pid, rerender }) => {
   const activeClass =
     "uppercase text-lg bg-white px-4 rounded-t-md py-2 border-t border-l border-r border-gray-300 hover:bg-white cursor-pointer";
   const notActiveClass =
@@ -15,6 +19,42 @@ const ProductInformation = ({ totalRating, totalCount, nameProduct }) => {
 
   const [activeTab, setActiveTab] = useState(0);
   const dispatch = useDispatch();
+  const { isLogin } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const handleSubmitVoteOption = async ({ score, comment }) => {
+    if (!comment || !score || !pid) {
+      toast.error("Please fill all fields");
+      return;
+    }
+    const response = await apis.apiRating({
+      star: score,
+      comment: comment,
+      pid,
+    });
+    if (response.success) {
+      toast.success("Rating success");
+      dispatch(showModal({ isShowModal: false, modalChildren: null }));
+      rerender();
+    }
+  };
+
+  const handleVote = async () => {
+    if (isLogin) {
+      dispatch(
+        showModal({
+          isShowModal: true,
+          modalChildren: (
+            <VoteOptions
+              nameProduct={nameProduct}
+              handleSubmitVoteOption={handleSubmitVoteOption}
+            />
+          ),
+        })
+      );
+    } else {
+      navigate(`/${path.LOGIN}`);
+    }
+  };
 
   return (
     <div>
@@ -47,32 +87,25 @@ const ProductInformation = ({ totalRating, totalCount, nameProduct }) => {
                 <span className="flex items-center gap-1">
                   {renderStartFromNumber(totalRating)}
                 </span>
-                <span className="">{totalCount} ratings and reviewers</span>
+                <span className="">{ratings.length} ratings and reviewers</span>
               </div>
               <div className="flex-6 flex flex-col-reverse gap-2">
                 {Array.from(Array(5).keys()).map((item) => (
                   <Votebar
                     key={item}
                     number={item + 1}
-                    ratingTotal={5}
-                    ratingCount={2}
+                    ratingTotal={ratings.length}
+                    ratingCount={
+                      ratings.filter((rating) => rating.star === item + 1)
+                        .length
+                    }
                   />
                 ))}
               </div>
             </div>
             <div className="flex flex-col items-center justify-center text-sm p-4 gap-2">
               <span className="">Have you rated this product?</span>
-              <Button
-                name="Write a review"
-                handleOnCLick={() =>
-                  dispatch(
-                    showModal({
-                      isShowModal: true,
-                      modalChildren: <VoteOptions nameProduct={nameProduct} />,
-                    })
-                  )
-                }
-              />
+              <Button name="Write a review" handleOnCLick={handleVote} />
             </div>
           </div>
         )}
