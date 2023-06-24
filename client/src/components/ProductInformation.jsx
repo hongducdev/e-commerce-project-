@@ -10,8 +10,15 @@ import * as apis from "../apis";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import path from "../ultils/path";
+import Comment from "./Comment";
 
-const ProductInformation = ({ totalRating, ratings, nameProduct, pid, rerender }) => {
+const ProductInformation = ({
+  totalRating,
+  ratings,
+  nameProduct,
+  pid,
+  rerender,
+}) => {
   const activeClass =
     "uppercase text-lg bg-white px-4 rounded-t-md py-2 border-t border-l border-r border-gray-300 hover:bg-white cursor-pointer";
   const notActiveClass =
@@ -30,6 +37,7 @@ const ProductInformation = ({ totalRating, ratings, nameProduct, pid, rerender }
       star: score,
       comment: comment,
       pid,
+      updatedAt: Date.now(),
     });
     if (response.success) {
       toast.success("Rating success");
@@ -75,21 +83,21 @@ const ProductInformation = ({ totalRating, ratings, nameProduct, pid, rerender }
           Customer Reviews
         </span>
       </div>
-      <div className="w-full h-[300px] border rounded-b-md rounded-tr-md border-gray-300 p-5">
+      <div className="w-full min-h-[300px] border rounded-b-md rounded-tr-md border-gray-300 p-5">
         {productInfoTabs.map((tab) => (
           <p key={tab.id}>{activeTab === tab.id && tab.content}</p>
         ))}
         {activeTab === 4 && (
           <div>
-            <div className="flex border border-gray-300 rounded-md p-4 items-center">
-              <div className="flex-4 flex items-center justify-center flex-col">
+            <div className="flex items-center">
+              <div className="flex-4 flex items-center justify-center flex-col ">
                 <span className="text-2xl font-semibold">{totalRating}/5</span>
                 <span className="flex items-center gap-1">
                   {renderStartFromNumber(totalRating)}
                 </span>
                 <span className="">{ratings.length} ratings and reviewers</span>
               </div>
-              <div className="flex-6 flex flex-col-reverse gap-2">
+              <div className="flex-6 flex flex-col-reverse gap-2 border-l border-gray-300 pl-10">
                 {Array.from(Array(5).keys()).map((item) => (
                   <Votebar
                     key={item}
@@ -106,6 +114,20 @@ const ProductInformation = ({ totalRating, ratings, nameProduct, pid, rerender }
             <div className="flex flex-col items-center justify-center text-sm p-4 gap-2">
               <span className="">Have you rated this product?</span>
               <Button name="Write a review" handleOnCLick={handleVote} />
+            </div>
+            <div className="flex flex-col gap-3">
+              {ratings.length > 0 &&
+                ratings.map((rating) => (
+                  <Comment
+                    key={rating._id}
+                    updatedAt={rating.updatedAt}
+                    star={rating.star}
+                    comment={rating.comment}
+                    name={
+                      rating.postedBy.firstName + " " + rating.postedBy.lastName
+                    }
+                  />
+                ))}
             </div>
           </div>
         )}

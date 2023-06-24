@@ -24,7 +24,13 @@ const getProduct = asyncHandler(async (req, res) => {
     throw new Error("Product id is empty");
   }
 
-  const product = await Product.findById(pid);
+  const product = await Product.findById(pid).populate({
+    path: "ratings",
+    populate: {
+      path: "postedBy",
+      select: "firstName lastName",
+    },
+  });
 
   return res.status(200).json({
     success: product ? true : false,
@@ -44,7 +50,7 @@ const getProducts = asyncHandler(async (req, res) => {
     (match) => `$${match}`
   );
   const formatedQueries = JSON.parse(queryString);
-  let colorQueryObject = { }
+  let colorQueryObject = {};
 
   if (queries?.title)
     formatedQueries.title = { $regex: queries.title, $options: "i" };
@@ -53,7 +59,9 @@ const getProducts = asyncHandler(async (req, res) => {
   if (queries?.color) {
     delete formatedQueries.color;
     const colorArr = queries.color.split(",");
-    const colorQuery = colorArr.map((el) => ({ color: {$regex: el, $options: 'i'} }));
+    const colorQuery = colorArr.map((el) => ({
+      color: { $regex: el, $options: "i" },
+    }));
     colorQueryObject = { $or: colorQuery };
   }
   const q = { ...formatedQueries, ...colorQueryObject };
@@ -120,7 +128,7 @@ const updateProduct = asyncHandler(async (req, res) => {
 
 const ratings = asyncHandler(async (req, res) => {
   const { _id } = req.user;
-  const { star, comment, pid } = req.body;
+  const { star, comment, pid, updatedAt } = req.body;
 
   if (!star || !pid) {
     throw new Error("Star or product id is empty");
@@ -139,6 +147,7 @@ const ratings = asyncHandler(async (req, res) => {
         $set: {
           "ratings.$.star": star,
           "ratings.$.comment": comment,
+          "ratings.$.updatedAt": updatedAt,
         },
       },
       { new: true }
@@ -152,6 +161,7 @@ const ratings = asyncHandler(async (req, res) => {
             star,
             comment,
             postedBy: _id,
+            updatedAt,
           },
         },
       },
