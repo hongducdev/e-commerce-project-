@@ -1,8 +1,14 @@
-import {useParams, useSearchParams} from "react-router-dom";
-import {Breadcrumbs, Pagination, Product, SearchItem, SelectOptions,} from "../../components";
-import {useCallback, useEffect, useState} from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+import {
+  Breadcrumbs,
+  Pagination,
+  Product,
+  SearchItem,
+  SelectOptions,
+} from "../../components";
+import { useCallback, useEffect, useState } from "react";
 import * as apis from "../../apis";
-import {sortOptions} from "../../ultils/contants";
+import { sortOptions } from "../../ultils/contants";
 
 const Products = () => {
   const { category } = useParams();
@@ -12,9 +18,12 @@ const Products = () => {
   const [params] = useSearchParams();
 
   const fetchProducts = async (queries) => {
-    const response = await apis.getProducts(queries);
+    const response = await apis.getProducts({
+      category,
+      ...queries,
+    });
     if (response.success) {
-      setProducts(response.productData);
+      setProducts(response);
     }
   };
 
@@ -39,6 +48,7 @@ const Products = () => {
     }
 
     fetchProducts(queries);
+    window.scrollTo(0, 0);
   }, [category, params]);
 
   const changeActiveFilter = useCallback(
@@ -52,9 +62,12 @@ const Products = () => {
     [activeClick]
   );
 
-  const changeValue = useCallback((value) => {
-    setSort(value);
-  }, [sort])
+  const changeValue = useCallback(
+    (value) => {
+      setSort(value);
+    },
+    [sort]
+  );
 
   useEffect(() => {
     const queries = {};
@@ -62,6 +75,7 @@ const Products = () => {
       queries.sort = sort;
     }
     fetchProducts(queries);
+    window.scrollTo(0, 0);
   }, [sort]);
 
   return (
@@ -93,17 +107,21 @@ const Products = () => {
           </div>
           <div className="w-1/5 flex-auto flex-col flex gap-3">
             <span className="text-sm font-semibold">Sort by</span>
-            <SelectOptions value={sort} options={sortOptions} changeValue={changeValue} />
+            <SelectOptions
+              value={sort}
+              options={sortOptions}
+              changeValue={changeValue}
+            />
           </div>
         </div>
         <div className="grid grid-cols-4 gap-5 mt-4 ">
-          {products.map((product) => (
+          {products?.productData?.map((product) => (
             <Product key={product._id} product={product} noSlider />
           ))}
         </div>
       </div>
-      <div className="w-main mx-auto my-4 flex justify-end">
-        <Pagination />
+      <div className="w-main mx-auto my-10 flex justify-end">
+        <Pagination totalCount={products.counts} />
       </div>
       <div className="w-full h-[200px]"></div>
     </div>

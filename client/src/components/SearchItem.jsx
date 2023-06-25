@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import icons from "../ultils/icons";
 import { colors } from "../ultils/contants";
-import { createSearchParams, useNavigate, useParams } from "react-router-dom";
+import { createSearchParams, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import * as apis from "../apis";
 import { formatMoney } from "../ultils/functions";
 import useDebounce from "../hooks/useDebounce";
@@ -23,6 +23,7 @@ const SearchItem = ({
     from: "",
     to: "",
   });
+  const [params] = useSearchParams();
 
   const handleSelect = (e) => {
     const alreadyEl = selected.find((el) => el === e.target.value);
@@ -35,11 +36,19 @@ const SearchItem = ({
 
   useEffect(() => {
     if (selected.length > 0) {
+      let param = [];
+      for (let i of params.entries()) {
+        param.push(i);
+      }
+      const queries = {};
+
+      for (let i of param) {
+        queries[i[0]] = i[1];
+      }
+      queries.color =  selected.join(",");
       naviagte({
-        pathName: category,
-        search: createSearchParams({
-          color: selected.join(","),
-        }).toString(),
+        pathName: `/${category}`,
+        search: createSearchParams(queries).toString(),
       });
     } else {
       naviagte({
