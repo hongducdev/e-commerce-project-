@@ -50,7 +50,7 @@ const TopHeader = () => {
           ORDER ONLINE OR CALL US (+84) 916 157 704
         </span>
         <div className="flex items-center">
-          {isLogin ? (
+          {isLogin && current ? (
             <span className="pr-2 border-r border-white">
               Welcome, {current?.firstName} {current?.lastName}
             </span>
@@ -62,7 +62,7 @@ const TopHeader = () => {
               Sign In or Create Account
             </Link>
           )}
-          {isLogin ? (
+          {isLogin && current ? (
             <span
               className="hover:text-grayDark px-2 cursor-pointer"
               title="Logout"
