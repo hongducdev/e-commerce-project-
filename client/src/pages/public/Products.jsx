@@ -1,13 +1,8 @@
-import { useParams, useSearchParams } from "react-router-dom";
-import {
-  Breadcrumbs,
-  Product,
-  SearchItem,
-  SelectOptions,
-} from "../../components";
-import { useCallback, useEffect, useState } from "react";
+import {useParams, useSearchParams} from "react-router-dom";
+import {Breadcrumbs, Pagination, Product, SearchItem, SelectOptions,} from "../../components";
+import {useCallback, useEffect, useState} from "react";
 import * as apis from "../../apis";
-import { sortOptions } from "../../ultils/contants";
+import {sortOptions} from "../../ultils/contants";
 
 const Products = () => {
   const { category } = useParams();
@@ -106,6 +101,9 @@ const Products = () => {
             <Product key={product._id} product={product} noSlider />
           ))}
         </div>
+      </div>
+      <div className="w-main mx-auto my-4 flex justify-end">
+        <Pagination />
       </div>
       <div className="w-full h-[200px]"></div>
     </div>
