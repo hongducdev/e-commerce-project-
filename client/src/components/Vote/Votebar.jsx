@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import icons from "../ultils/icons";
+import React, {memo, useEffect, useRef} from "react";
+import icons from "../../ultils/icons";
 
 const { BsStarFill } = icons;
 
@@ -30,4 +30,4 @@ const Votebar = ({ number, ratingCount, ratingTotal }) => {
   );
 };
 
-export default Votebar;
+export default memo(Votebar);

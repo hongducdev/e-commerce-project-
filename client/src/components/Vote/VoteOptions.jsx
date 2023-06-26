@@ -1,8 +1,8 @@
-import React, { memo, useEffect, useRef, useState } from "react";
-import icons from "../ultils/icons";
-import { useDispatch } from "react-redux";
-import { showModal } from "../store/app/appSlice";
-import Button from "./Button";
+import React, {memo, useEffect, useRef, useState} from "react";
+import icons from "../../ultils/icons";
+import {useDispatch} from "react-redux";
+import {showModal} from "../../store/app/appSlice";
+import Button from "../Button/Button";
 
 const { AiOutlineClose, BsStarFill } = icons;
 

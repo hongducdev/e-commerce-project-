@@ -1,5 +1,5 @@
-import React, { memo, useEffect, useState } from "react";
-import * as apis from "../apis";
+import React, {memo, useEffect, useState} from "react";
+import * as apis from "../../apis";
 import ProductCard from "./ProductCard";
 
 const FeatureProducts = () => {

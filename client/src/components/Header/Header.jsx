@@ -1,7 +1,7 @@
-import React from "react";
+import React, {memo} from "react";
 import {Link} from "react-router-dom";
-import path from "../ultils/path";
-import icons from "../ultils/icons";
+import path from "../../ultils/path";
+import icons from "../../ultils/icons";
 import {useSelector} from "react-redux";
 
 const {FaPhoneAlt, FaUserAlt, FaShoppingBag, IoMdMail} = icons;
@@ -54,4 +54,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header)

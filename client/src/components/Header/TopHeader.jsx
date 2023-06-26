@@ -1,10 +1,10 @@
-import React, { memo, useEffect } from "react";
-import { Link } from "react-router-dom";
-import path from "../ultils/path";
-import icons from "../ultils/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { getCurrent } from "../store/user/asyncActions";
-import { logout } from "../store/user/userSlice";
+import React, {memo, useEffect} from "react";
+import {Link} from "react-router-dom";
+import path from "../../ultils/path";
+import icons from "../../ultils/icons";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrent} from "../../store/user/asyncActions";
+import {logout} from "../../store/user/userSlice";
 
 const { FaFacebookF, FaInstagram, FaTwitter, FaGoogle, IoLogOutOutline } =
   icons;

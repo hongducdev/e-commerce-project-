@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 
 const Button = ({name, handleOnCLick, style, iconsBefore, iconsAfter, isDisable}) => {
   return (
@@ -17,4 +17,4 @@ const Button = ({name, handleOnCLick, style, iconsBefore, iconsAfter, isDisable}
   );
 };
 
-export default Button;
+export default memo(Button);

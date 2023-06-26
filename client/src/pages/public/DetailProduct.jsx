@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {useCallback, useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 import * as apis from "../../apis";
 import {
   Breadcrumbs,
@@ -11,8 +11,8 @@ import {
 } from "../../components";
 import Slider from "react-slick";
 import ReactImageMagnify from "react-image-magnify";
-import { formatMoney, renderStartFromNumber } from "../../ultils/functions";
-import { productExtraInfo } from "../../ultils/contants";
+import {formatMoney, renderStartFromNumber} from "../../ultils/functions";
+import {productExtraInfo} from "../../ultils/contants";
 
 var settings = {
   // dots: true,

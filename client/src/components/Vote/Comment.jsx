@@ -1,7 +1,7 @@
-import React, { memo } from "react";
-import avatar from "../assets/user-ava.png";
+import React, {memo} from "react";
+import avatar from "../../assets/user-ava.png";
 import moment from "moment";
-import { renderStartFromNumber } from "../ultils/functions";
+import {renderStartFromNumber} from "../../ultils/functions";
 
 const Comment = ({
   image = avatar,

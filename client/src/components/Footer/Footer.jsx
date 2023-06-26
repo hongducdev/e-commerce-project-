@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import icons from "../ultils/icons";
-import { Link } from "react-router-dom";
+import React, {memo} from "react";
+import icons from "../../ultils/icons";
+import {Link} from "react-router-dom";
 
 const { IoMdMail } = icons;
 

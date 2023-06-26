@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 
 const SelectOption = ({ icon, title }) => {
   return (
@@ -11,4 +11,4 @@ const SelectOption = ({ icon, title }) => {
   );
 };
 
-export default SelectOption;
+export default memo(SelectOption);

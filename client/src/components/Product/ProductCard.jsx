@@ -1,7 +1,6 @@
-import React, { memo } from "react";
-import { Link } from "react-router-dom";
-import { formatMoney, renderStartFromNumber } from "../ultils/functions";
-import path from "../ultils/path";
+import React, {memo} from "react";
+import {Link} from "react-router-dom";
+import {formatMoney, renderStartFromNumber} from "../../ultils/functions";
 
 const ProductCard = ({ title, thumb, price, totalRatings, pid, slug, category }) => {
   return (

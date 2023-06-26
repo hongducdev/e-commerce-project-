@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import * as apis from "../apis";
-
-import Slider from "react-slick";
-import Product from "./Product";
-import CustomSlider from "./CustomSlider";
-import { useDispatch, useSelector } from "react-redux";
-import { getNewProducts } from "../store/products/asyncActions";
+import React, {memo, useEffect, useState} from "react";
+import * as apis from "../../apis";
+import CustomSlider from "../Common/CustomSlider";
+import {useDispatch, useSelector} from "react-redux";
+import {getNewProducts} from "../../store/products/asyncActions";
 
 const tabs = [
   {
@@ -77,4 +74,4 @@ const BestSeller = () => {
   );
 };
 
-export default BestSeller;
+export default memo(BestSeller);

@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { formatString } from "../ultils/functions";
-import { useSelector } from "react-redux";
+import {NavLink} from "react-router-dom";
+import {formatString} from "../../ultils/functions";
+import {useSelector} from "react-redux";
 
 const Sidebar = () => {
   const classes =

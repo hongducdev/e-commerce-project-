@@ -1,6 +1,7 @@
-import React, { memo } from "react";
+import React, {memo} from "react";
 import Slider from "react-slick";
-import Product from "./Product";
+import Product from "../Product/Product";
+
 var settings = {
   // dots: true,
   infinite: true,

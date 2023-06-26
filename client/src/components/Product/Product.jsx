@@ -1,7 +1,7 @@
-import React from "react";
-import {formatMoney, renderStartFromNumber} from "../ultils/functions";
-import SelectOption from "./SelectOption";
-import icons from "../ultils/icons";
+import React, {memo} from "react";
+import {formatMoney, renderStartFromNumber} from "../../ultils/functions";
+import SelectOption from "../Search/SelectOption";
+import icons from "../../ultils/icons";
 import {Link} from "react-router-dom";
 
 const {FaRegEye, FaShoppingCart, AiFillHeart} = icons;
@@ -63,4 +63,4 @@ const Product = ({product, isNew, noSlider}) => {
   );
 };
 
-export default Product;
+export default memo(Product);

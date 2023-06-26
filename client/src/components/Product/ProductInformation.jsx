@@ -1,16 +1,16 @@
-import { memo, useState } from "react";
-import { productInfoTabs } from "../ultils/contants";
-import Votebar from "./Votebar";
-import { renderStartFromNumber } from "../ultils/functions";
-import Button from "./Button";
-import { useDispatch, useSelector } from "react-redux";
-import { showModal } from "../store/app/appSlice";
-import VoteOptions from "./VoteOptions";
-import * as apis from "../apis";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import path from "../ultils/path";
-import Comment from "./Comment";
+import {memo, useState} from "react";
+import {productInfoTabs} from "../../ultils/contants";
+import Votebar from "../Vote/Votebar";
+import {renderStartFromNumber} from "../../ultils/functions";
+import Button from "../Button/Button";
+import {useDispatch, useSelector} from "react-redux";
+import {showModal} from "../../store/app/appSlice";
+import VoteOptions from "../Vote/VoteOptions";
+import * as apis from "../../apis";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
+import path from "../../ultils/path";
+import Comment from "../Vote/Comment";
 
 const ProductInformation = ({
   totalRating,
@@ -124,7 +124,7 @@ const ProductInformation = ({
                     star={rating.star}
                     comment={rating.comment}
                     name={
-                      rating.postedBy.firstName + " " + rating.postedBy.lastName
+                      rating?.postedBy?.firstName + " " + rating?.postedBy?.lastName
                     }
                   />
                 ))}

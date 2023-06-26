@@ -4,30 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="✨ Pagination page product">
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Loading.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/AdminLayout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/CreateProduct.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/Dashboard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageOrder.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageProducts.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/member/MemberLayout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/member/Personal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/member/index.js" afterDir="false" />
+    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="📝 Config Admin and Member by role">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Banner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Common/Banner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BestSeller.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product/BestSeller.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Breadcrumbs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Common/Breadcrumbs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Button/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Comment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Vote/Comment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Counter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Common/Counter.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CustomSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Common/CustomSlider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/DealDaily.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product/DealDaily.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/FeatureProducts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product/FeatureProducts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Footer/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/InputField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Inputs/InputField.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Loading.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Common/Loading.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Modal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Common/Modal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Navigation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navigation/Navigation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/PagiItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Pagination/PagiItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Pagination.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Pagination/Pagination.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product/Product.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProductCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product/ProductCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProductExtraInfoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product/ProductExtraInfoItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ProductInformation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Product/ProductInformation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Ratings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Vote/Ratings.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SearchItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Search/SearchItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SelectOption.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Search/SelectOption.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SelectOptions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Inputs/SelectOptions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SelectQuantity.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Common/SelectQuantity.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Sidebar/Sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TopHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header/TopHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/VoteOptions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Vote/VoteOptions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Votebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Vote/Votebar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/public/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/public/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/redux.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/redux.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/ultils/path.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/path.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/verifyToken.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/verifyToken.middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/user.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/public/DetailProduct.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,27 +68,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ReactCreateComponentLastSelected": "functionDeclarationComponent",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/Code/bot-discord",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ReactCreateComponentLastSelected&quot;: &quot;functionDeclarationComponent&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/bot-discord&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -86,6 +96,15 @@
         <entry key="com.haulmont.rcb.reactInspector" value="false" />
       </map>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code\ecommerce\client\src\components\Vote" />
+      <recent name="D:\Code\ecommerce\client\src\components\Search" />
+      <recent name="D:\Code\ecommerce\client\src\components\Product" />
+      <recent name="D:\Code\ecommerce\client\src\components\Common" />
+      <recent name="D:\Code\ecommerce\client\src\components\Navigation" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -111,7 +130,8 @@
       <workItem from="1687657787368" duration="80000" />
       <workItem from="1687737779989" duration="175000" />
       <workItem from="1687738353342" duration="893000" />
-      <workItem from="1687739281557" duration="9178000" />
+      <workItem from="1687739281557" duration="9418000" />
+      <workItem from="1687783404478" duration="1953000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Complete Info and change quantity product in DetailProduct.jsx">
       <created>1687171426527</created>
@@ -135,7 +155,23 @@
       <option name="project" value="LOCAL" />
       <updated>1687653047516</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="📝 Config Admin and Member by role">
+      <option name="closed" value="true" />
+      <created>1687772403545</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687772403545</updated>
+    </task>
+    <task id="LOCAL-00005" summary="📝 Config Admin and Member by role">
+      <option name="closed" value="true" />
+      <created>1687772412380</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687772412380</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +185,8 @@
     <MESSAGE value="✨ Complete Info and change quantity product in DetailProduct.jsx" />
     <MESSAGE value="✨ Complete page DetailProduct.jsx" />
     <MESSAGE value="✨ Pagination page product" />
-    <option name="LAST_COMMIT_MESSAGE" value="✨ Pagination page product" />
+    <MESSAGE value=" Config Admin and Member by role" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Config Admin and Member by role" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
