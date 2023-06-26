@@ -5,18 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="✨ Pagination page product">
+      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Loading.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/AdminLayout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/CreateProduct.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/Dashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageOrder.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageProducts.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/admin/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/member/MemberLayout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/member/Personal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/member/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/public/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/public/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/redux.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/redux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/ultils/path.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/path.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middlewares/verifyToken.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/verifyToken.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/user.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectId" id="2RNMDlTcOtGTaGmmyFKoYSr3PzN" />
   <component name="ProjectLevelVcsManager">
@@ -29,9 +61,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ReactCreateComponentLastSelected": "arrowFunctionComponent",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ReactCreateComponentLastSelected": "functionDeclarationComponent",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -75,6 +109,9 @@
       <workItem from="1687610906723" duration="1295000" />
       <workItem from="1687650458609" duration="2558000" />
       <workItem from="1687657787368" duration="80000" />
+      <workItem from="1687737779989" duration="175000" />
+      <workItem from="1687738353342" duration="893000" />
+      <workItem from="1687739281557" duration="9178000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Complete Info and change quantity product in DetailProduct.jsx">
       <created>1687171426527</created>

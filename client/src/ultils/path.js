@@ -11,6 +11,20 @@ const path = {
   FINAL_REGISTER: "finalregister/:status",
   RESET_PASSWORD: "reset-password/:token",
 
+
+  // ADMIN
+  ADMIN: "admin",
+  DASHBOARD: "dashboard",
+  MANAGE_USER: "manage-user",
+  MANAGE_PRODUCT: "manage-product",
+  MANAGE_ORDER: "manage-order",
+  CREATE_PRODUCT: "create-product",
+
+  // MEMBER
+  MEMBER: "member",
+  PERSONAL: "personal",
+
+
   ALL: "*",
 };
 
