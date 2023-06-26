@@ -2,10 +2,14 @@ import React from "react";
 import {Link} from "react-router-dom";
 import path from "../ultils/path";
 import icons from "../ultils/icons";
+import {useSelector} from "react-redux";
 
 const {FaPhoneAlt, FaUserAlt, FaShoppingBag, IoMdMail} = icons;
 
 const Header = () => {
+
+  const {current} = useSelector(state => state.user);
+
   return (
     <div className="w-main h-[110px] py-[35px] flex items-center justify-between">
       <div className="">
@@ -34,12 +38,17 @@ const Header = () => {
           <FaShoppingBag size={24} className="text-primary"/>
           <span className="">0 item</span>
         </div>
-        <div className="px-5 flex items-center gap-2 cursor-pointer">
-          <FaUserAlt size={24} className="text-primary"/>
-          <span>
+        {
+          current && (
+            <Link className="px-5 flex items-center gap-2 cursor-pointer"
+                  to={current.role === 1001 ? `/${path.ADMIN}/${path.DASHBOARD}` : `/${path.MEMBER}/${path.PERSONAL}`}>
+              <FaUserAlt size={24} className="text-primary"/>
+              <span>
             Profile
           </span>
-        </div>
+            </Link>
+          )
+        }
       </div>
     </div>
   );

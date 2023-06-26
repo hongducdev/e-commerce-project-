@@ -1,18 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 import appSlice from "./app/appSlice";
 import productSlice from "./products/productSlice";
 import storage from "redux-persist/lib/storage";
 import userSlice from "./user/userSlice";
-import {
-  persistReducer,
-  persistStore,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
+import {FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE,} from "redux-persist";
 
 const persistConfig = {
   key: "shop/user",
@@ -21,7 +12,7 @@ const persistConfig = {
 
 const userConfig = {
   ...persistConfig,
-  whitelist: ["isLogin", "token"],
+  whitelist: ["isLogin", "token", "current"],
 };
 
 export const store = configureStore({

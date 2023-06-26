@@ -1,6 +1,6 @@
 /* eslint-disable react/style-prop-object */
 import React, {useCallback, useEffect, useState} from "react";
-import {Button, InputField} from "../../components";
+import {Button, InputField, Loading} from "../../components";
 import * as apis from "../../apis";
 import {toast} from "react-toastify";
 import {Link, useNavigate} from "react-router-dom";
@@ -27,6 +27,7 @@ const Login = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [invalidFields, setInvalidFields] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setPayload({
@@ -40,16 +41,15 @@ const Login = () => {
 
   const handleSubmit = useCallback(async () => {
     const {firstName, lastName, mobile, ...data} = payload;
-
+    setIsLoading(true)
     const invalids = isRegister
       ? validate(payload, setInvalidFields)
       : validate(data, setInvalidFields);
-    console.log("🚀 ~ handleSubmit ~ invalids:", invalids);
 
     if (invalids === 0) {
       if (isRegister) {
-        console.log("register");
         const response = await apis.apiRegister(payload);
+        setIsLoading(false)
         if (response?.success) {
           toast.success(response?.message);
           setPayload({
@@ -65,6 +65,7 @@ const Login = () => {
         }
       } else {
         const response = await apis.apiLogin(data);
+        setIsLoading(false)
         if (response.success) {
           toast.success(response.message);
           dispatch(
@@ -86,9 +87,11 @@ const Login = () => {
     email: "",
   });
   const handleForgotPassword = async () => {
+    setIsLoading(true)
     const response = await apis.apiForgotPassword({
       ...payloadForgotPassword,
     });
+    setIsLoading(false)
     if (response.success) {
       toast.success(response.message);
       setPayloadForgotPassword({
@@ -134,8 +137,8 @@ const Login = () => {
                 setInvalidFields={setInvalidFields}
               />
               <Button
-                name="Send Email"
-                style="w-full"
+                name={isLoading ? <Loading/> : "Send Email"}
+                style={isLoading ? "w-full bg-opacity-50 cursor-wait" : 'w-full'}
                 handleOnCLick={handleForgotPassword}
               />
             </div>
@@ -200,11 +203,21 @@ const Login = () => {
             setInvalidFields={setInvalidFields}
           />
 
-          <Button
-            name={isRegister ? "Register" : "Login"}
-            style="w-full"
-            handleOnCLick={handleSubmit}
-          />
+          {
+            isLoading ? (
+              <Button
+                name={<Loading white isSmall/>}
+                style="w-full bg-opacity-50 cursor-wait"
+                isDisabled
+              />
+            ) : (
+              <Button
+                name={isRegister ? "Register" : "Login"}
+                style="w-full"
+                handleOnCLick={handleSubmit}
+              />
+            )
+          }
         </div>
         <div className="flex items-center justify-between text-gray-400 mt-4 text-sm cursor-pointer">
           {!isRegister && (
