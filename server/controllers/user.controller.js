@@ -8,6 +8,7 @@ const {
 const jwt = require("jsonwebtoken");
 const sentMail = require("../ultils/sentMail.js");
 const makeToken = require("uniqid");
+const Product = require("../models/product.model");
 
 // const register = asyncHandler(async (req, res) => {
 //   const { email, password, firstName, lastName, mobile } = req.body;
@@ -249,10 +250,45 @@ const resetToken = asyncHandler(async (req, res) => {
 });
 
 const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find({}).select("-password -refreshToken");
-  return res.status(200).json({
-    success: users ? true : false,
-    users: users ? users : "Users not found",
+  const queries = { ...req.query };
+
+  const excludedfields = ["page", "sort", "limit", "fields"];
+  excludedfields.forEach((el) => delete queries[el]);
+
+  let querystring = JSON.stringify(queries);
+  querystring = querystring.replace(
+    /\b(gte|gt|lte|lt)\b/g,
+    (match) => `$${match}`
+  );
+  const formatedqueries = JSON.parse(querystring);
+
+  if (queries?.firstname)
+    formatedqueries.firstname = { $regex: queries.title, $options: "i" };
+  let querycommand = User.find(formatedqueries);
+
+  if (req.query.sort) {
+    const sortby = req.query.sort.split(",").join(" ");
+    querycommand = querycommand.sort(sortby);
+  }
+
+  if (req.query.fields) {
+    const fields = req.query.fields.split(",").join(" ");
+    querycommand = querycommand.select(fields);
+  }
+
+  const page = +req.query.page || 1;
+  const limit = +req.query.limit || process.env.limit_products;
+  const skip = (page - 1) * limit;
+  querycommand = querycommand.skip(skip).limit(limit);
+
+  querycommand.exec(async (err, users) => {
+    if (err) throw new error(err);
+    const counts = await User.find(formatedqueries).countDocuments();
+    return res.status(200).json({
+      success: users ? true : false,
+      counts,
+      users: users ? users : "Users not found",
+    });
   });
 });
 

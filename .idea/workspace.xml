@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="⚙️ Refactor the components directory">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Sidebar/AdminSidebar.jsx" afterDir="false" />
+    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="💄 Config and style AdminSidebar.jsx">
+      <change afterPath="$PROJECT_DIR$/server/models/role.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/AdminLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/AdminLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/ManageOrder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageOrder.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/apis/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/apis/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/ultils/contants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/contants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/ultils/icons.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/icons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +58,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.editor",
+    "settings.editor.selected.configurable": "discord-application",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -106,7 +105,7 @@
       <workItem from="1687738353342" duration="893000" />
       <workItem from="1687739281557" duration="9418000" />
       <workItem from="1687783404478" duration="3928000" />
-      <workItem from="1687821873509" duration="4017000" />
+      <workItem from="1687821873509" duration="11664000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Complete Info and change quantity product in DetailProduct.jsx">
       <created>1687171426527</created>
@@ -154,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687785496469</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="💄 Config and style AdminSidebar.jsx">
+      <option name="closed" value="true" />
+      <created>1687826519698</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687826519698</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +177,8 @@
     <MESSAGE value="✨ Pagination page product" />
     <MESSAGE value=" Config Admin and Member by role" />
     <MESSAGE value="⚙️ Refactor the components directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="⚙️ Refactor the components directory" />
+    <MESSAGE value=" Config and style AdminSidebar.jsx" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Config and style AdminSidebar.jsx" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

@@ -40,3 +40,11 @@ export const apiGetCurrent = async (data) => {
     data,
   })
 };
+
+export const apiGetAllUsers = async (params) => {
+  return axios({
+    url: "/user/",
+    method: "GET",
+    params,
+  })
+}

@@ -178,3 +178,14 @@ export const adminSidebars = [
     icon: <FaMoneyCheck size="24"/>,
   },
 ]
+
+export const roles = [
+  {
+    code: 1001,
+    value: "Admin",
+  },
+  {
+    code: 1000,
+    value: "User",
+  }
+]
