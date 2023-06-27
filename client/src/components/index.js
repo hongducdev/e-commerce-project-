@@ -1,6 +1,7 @@
 export { default as Header } from "./Header/Header";
 export { default as Navigation } from "./Navigation/Navigation";
 export { default as Sidebar } from "./Sidebar/Sidebar";
+export { default as AdminSidebar } from "./Sidebar/AdminSidebar";
 export { default as Banner } from "./Common/Banner";
 export { default as BestSeller } from "./Product/BestSeller";
 export { default as Product } from "./Product/Product";
