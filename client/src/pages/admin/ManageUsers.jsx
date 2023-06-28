@@ -2,9 +2,14 @@ import React, {useEffect, useState} from 'react';
 import * as apis from '../../apis';
 import {roles} from "../../ultils/contants";
 import moment from "moment";
+import {InputField, Pagination} from "../../components";
+import useDebounce from "../../hooks/useDebounce";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
+  const [payload, setPayload] = useState({
+    q: "",
+  })
   const fetchUsers = async (params) => {
     const response = await apis.apiGetAllUsers(params);
     console.log(response);
@@ -13,10 +18,15 @@ const ManageUsers = () => {
     }
   }
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  const queriesDebounce = useDebounce(payload.q, 500)
 
+  useEffect(() => {
+    const params = {};
+    if (queriesDebounce) {
+      params.q = queriesDebounce;
+    }
+    fetchUsers(params)
+  }, [queriesDebounce]);
 
   return (
     <div>
@@ -24,6 +34,16 @@ const ManageUsers = () => {
         <span className="font-semibold text-4xl text-grayDark">
           Manage Users
         </span>
+      </div>
+      <div className="flex justify-end p-4">
+        <InputField
+          type="text"
+          nameKey="q"
+          value={payload.q}
+          setValue={setPayload}
+          placeholder="Search name user, email, phone"
+          isHideLabel
+        />
       </div>
       <div className="relative overflow-x-auto p-4">
         <table className="w-full text-sm text-left text-gray-500">
@@ -49,18 +69,22 @@ const ManageUsers = () => {
               <td className="px-6 py-4">{roles.find(role => role.code === user.role)?.value}</td>
               <td className="px-6 py-4">{moment(user.createdAt).format("DD/MM/YYYY")}</td>
               <td className="px-6 py-4">{user.isBlocked ? "Blocked" : "Active"}</td>
-              <td className="px-6 py-4">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              <td className="px-6 py-4 flex items-center gap-3">
+                <span className="hover:text-primary underline cursor-pointer">
                   Edit
-                </button>
-                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                </span>
+                <span className="hover:text-primary underline cursor-pointer">
                   Delete
-                </button>
+                </span>
               </td>
             </tr>
           ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="w-full p-4">
+        <Pagination totalCount={users?.counts} />
       </div>
     </div>
   );
