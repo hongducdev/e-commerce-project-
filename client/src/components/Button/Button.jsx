@@ -1,10 +1,10 @@
 import React, {memo} from "react";
 
-const Button = ({name, handleOnCLick, style, iconsBefore, iconsAfter, isDisable}) => {
+const Button = ({name, type = "button", handleOnCLick, style, iconsBefore, iconsAfter, isDisable}) => {
   return (
     <button
       className={`${style} px-4 py-2 rounded-md bg-primary text-white my-2`}
-      type="button"
+      type={type}
       onClick={() => {
         handleOnCLick && !isDisable && handleOnCLick();
       }}

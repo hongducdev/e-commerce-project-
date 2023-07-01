@@ -48,3 +48,18 @@ export const apiGetAllUsers = async (params) => {
     params,
   })
 }
+
+export const apiUpdateUser = async (data, uid) => {
+  return axios({
+    url: `/user/${uid}`,
+    method: "PUT",
+    data,
+  })
+}
+
+export const apiDeleteUser = async (uid) => {
+  return axios({
+    url: `/user/${uid}`,
+    method: "DELETE",
+  })
+};

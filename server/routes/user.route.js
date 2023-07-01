@@ -23,7 +23,7 @@ router.put("/cart", userController.updateCart);
 router.use(isAdmin);
 
 router.get("/", userController.getUsers);
-router.delete("/", userController.deleteUser);
+router.delete("/:uid", userController.deleteUser);
 router.put("/:uid", userController.updateUserByAdmin);
 
 module.exports = router;

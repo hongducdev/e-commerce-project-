@@ -301,9 +301,8 @@ const getUsers = asyncHandler(async (req, res) => {
 });
 
 const deleteUser = asyncHandler(async (req, res) => {
-  const { _id } = req.query;
-  if (!_id) throw new Error("User id is required");
-  const user = await User.findByIdAndDelete(_id);
+  const { uid } = req.params;
+  const user = await User.findByIdAndDelete(uid);
   return res.status(200).json({
     success: user ? true : false,
     message: user ? "User deleted successfully!" : "User deletion failed!",
