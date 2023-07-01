@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="✨ Search and pagination manage user">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Inputs/InputForm.jsx" afterDir="false" />
+    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="✏️ Edit and Delete user in Manage User">
+      <change afterPath="$PROJECT_DIR$/client/src/components/Inputs/Select.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/apis/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/apis/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Button/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Button/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Inputs/InputForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Inputs/InputForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/ultils/contants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/contants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +111,8 @@
       <workItem from="1687920262375" duration="5000" />
       <workItem from="1688095498686" duration="1201000" />
       <workItem from="1688111399549" duration="6971000" />
-      <workItem from="1688172714930" duration="3550000" />
+      <workItem from="1688172714930" duration="3878000" />
+      <workItem from="1688197640919" duration="3217000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Complete Info and change quantity product in DetailProduct.jsx">
       <created>1687171426527</created>
@@ -188,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687916219156</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="✏️ Edit and Delete user in Manage User">
+      <option name="closed" value="true" />
+      <created>1688176746042</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1688176746042</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +211,8 @@
     <MESSAGE value=" Config and style AdminSidebar.jsx" />
     <MESSAGE value=" Style table manage user" />
     <MESSAGE value="✨ Search and pagination manage user" />
-    <option name="LAST_COMMIT_MESSAGE" value="✨ Search and pagination manage user" />
+    <MESSAGE value="✏️ Edit and Delete user in Manage User" />
+    <option name="LAST_COMMIT_MESSAGE" value="✏️ Edit and Delete user in Manage User" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

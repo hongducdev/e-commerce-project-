@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import * as apis from '../../apis';
-import {roles} from "../../ultils/contants";
 import moment from "moment";
-import {InputField, InputForm, Pagination} from "../../components";
+import {InputField, InputForm, Pagination, Select} from "../../components";
 import useDebounce from "../../hooks/useDebounce";
 import {useSearchParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {toast} from "react-toastify";
 import Swal from "sweetalert2";
+import {blockStatus, roles} from "../../ultils/contants";
 
 const ManageUsers = () => {
   const {
@@ -99,27 +99,28 @@ const ManageUsers = () => {
       </div>
       <div className="relative overflow-x-auto p-4">
         <form onSubmit={handleSubmit(handleEditUser)}>
-          <table className="w-full text-sm text-left text-gray-500">
+          <table className="w-full text-sm text-left text-gray-500 table-auto">
             <thead className='text-xs text-gray-700 uppercase bg-gray-50'>
             <tr>
-              <th scope="col" className="px-6 py-3">#</th>
-              <th scope="col" className="px-6 py-3">First Name</th>
-              <th scope="col" className="px-6 py-3">Last Name</th>
-              <th scope="col" className="px-6 py-3">Email</th>
-              <th scope="col" className="px-6 py-3">Phone</th>
-              <th scope="col" className="px-6 py-3">Role</th>
-              <th scope="col" className="px-6 py-3">Created</th>
-              <th scope="col" className="px-6 py-3">Status</th>
-              <th scope="col" className="px-6 py-3">Actions</th>
+              <th className="p-3">#</th>
+              <th className="p-3">First Name</th>
+              <th className="p-3">Last Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p-3">Role</th>
+              <th className="p-3">Created</th>
+              <th className="p-3">Status</th>
+              <th className="p-3">Actions</th>
             </tr>
             </thead>
             <tbody>
             {users?.users?.map((user, index) => (
               <tr key={user._id} className={`${(index + 1) % 2 === 0 ? "bg-gray-50" : "bg-white"} border-b`}>
-                <td className="px-6 py-4">{index + 1}</td>
-                <td className="px-6 py-4">{
+                <td className="p-3">{index + 1}</td>
+                <td className="p-3">{
                   editUser?._id === user._id ? (<InputForm
                     register={register}
+                    fullWidth
                     errors={errors}
                     id="firstName"
                     placeholder="First name"
@@ -130,11 +131,12 @@ const ManageUsers = () => {
                     }}
                   />) : (<span>{user.firstName}</span>)
                 }</td>
-                <td className="px-6 py-4">{
+                <td className="p-3">{
                   editUser?._id === user._id ? (<InputForm
                     register={register}
                     errors={errors}
                     id="lastName"
+                    fullWidth
                     placeholder="Last name"
                     defaultValue={editUser.lastName}
                     validate={{
@@ -143,12 +145,13 @@ const ManageUsers = () => {
                     }}
                   />) : (<span>{user.lastName}</span>)
                 }</td>
-                <td className="px-6 py-4">{
+                <td className="p-3">{
                   editUser?._id === user._id ? (<InputForm
                     register={register}
                     type="email"
                     errors={errors}
                     id="email"
+                    fullWidth
                     placeholder="Email"
                     defaultValue={editUser.email}
                     validate={{
@@ -160,11 +163,12 @@ const ManageUsers = () => {
                     }}
                   />) : (<span>{user.email}</span>)
                 }</td>
-                <td className="px-6 py-4">{
+                <td className="p-3">{
                   editUser?._id === user._id ? (<InputForm
                     register={register}
                     errors={errors}
                     id="mobile"
+                    fullWidth
                     placeholder="Mobile"
                     defaultValue={editUser.mobile}
                     validate={{
@@ -176,10 +180,40 @@ const ManageUsers = () => {
                     }}
                   />) : (<span>{user.mobile}</span>)
                 }</td>
-                <td className="px-6 py-4">{roles.find(role => role.code === user.role)?.value}</td>
-                <td className="px-6 py-4">{moment(user.createdAt).format("DD/MM/YYYY")}</td>
-                <td className="px-6 py-4">{user.isBlocked ? "Blocked" : "Active"}</td>
-                <td className="px-6 py-4 flex items-center gap-3">
+                <td className="p-3">{
+                  editUser?._id === user._id ? (
+                    <Select
+                      register={register}
+                      errors={errors}
+                      defaultValue={editUser.role}
+                      id="role"
+                      fullWidth
+                      options={roles}
+                      validate={{
+                        required: "Role is required",
+                      }}
+                    />
+                  ) : (<span>{roles.find(role => role.code === user.role)?.value}</span>)
+                }</td>
+                <td className="p-3">{moment(user.createdAt).format("DD/MM/YYYY")}</td>
+                <td className="p-3">{
+                  editUser?._id === user._id ? (
+                    <Select
+                      register={register}
+                      errors={errors}
+                      defaultValue={editUser.isBlocked}
+                      id="isBlocked"
+                      fullWidth
+                      options={blockStatus}
+                      validate={{
+                        required: "Status is required",
+                      }}
+                    />
+                  ) : (
+                    <span>{user.isBlocked ? "Blocked" : "Active"}</span>
+                  )
+                }</td>
+                <td className="p-3 flex items-center gap-3">
                   {
                     editUser?._id === user._id ? (
                       <>
