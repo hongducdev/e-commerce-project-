@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="✏️ Edit and Delete user in Manage User">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Inputs/Select.jsx" afterDir="false" />
+    <list default="true" id="9768de9e-4dfc-46a5-a3d1-bf1f4e821e40" name="Changes" comment="✏️ Change role and status block for user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Inputs/InputForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Inputs/InputForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/ManageUsers.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/ultils/contants.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/ultils/contants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Inputs/Select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Inputs/Select.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/CreateProduct.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/CreateProduct.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +50,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code/bot-discord&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/lofi&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -112,7 +110,9 @@
       <workItem from="1688095498686" duration="1201000" />
       <workItem from="1688111399549" duration="6971000" />
       <workItem from="1688172714930" duration="3878000" />
-      <workItem from="1688197640919" duration="3217000" />
+      <workItem from="1688197640919" duration="3544000" />
+      <workItem from="1688214390695" duration="14000" />
+      <workItem from="1688457790430" duration="2860000" />
     </task>
     <task id="LOCAL-00001" summary="✨ Complete Info and change quantity product in DetailProduct.jsx">
       <created>1687171426527</created>
@@ -192,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688176746042</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="✏️ Change role and status block for user">
+      <option name="closed" value="true" />
+      <created>1688201068797</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1688201068797</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,7 +220,8 @@
     <MESSAGE value=" Style table manage user" />
     <MESSAGE value="✨ Search and pagination manage user" />
     <MESSAGE value="✏️ Edit and Delete user in Manage User" />
-    <option name="LAST_COMMIT_MESSAGE" value="✏️ Edit and Delete user in Manage User" />
+    <MESSAGE value="✏️ Change role and status block for user" />
+    <option name="LAST_COMMIT_MESSAGE" value="✏️ Change role and status block for user" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

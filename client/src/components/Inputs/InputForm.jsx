@@ -11,10 +11,11 @@ const InputForm = ({
                      type = "text",
                      placeholder,
                      fullWidth,
-                     defaultValue
+                     defaultValue,
+                     style
                    }) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className={`flex flex-col gap-2 ${style}`}>
       {
         label && (<label htmlFor={id}>
           {label}
